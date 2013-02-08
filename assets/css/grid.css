@@ -1,20 +1,35 @@
 /*!
- * grid.css
- * Fixed-width + responsive grid system with IE 6-8 fallback
- * http://eightsevencentral.com
+ * grid-responsive.css
+ * Responsive grid system with IE 6-8 fallback
+ * https://github.com/johnsolarz/grid
  */
 
-/* =============================================================================
-   960px/Base grid, IE 6-8 fallback
+/* ==========================================================================
+   Breakpoints
+
+   300px  | Mobile portrait   - Single column  @ 300px
+   460px  | Mobile landscape  - Single column  @ 460px
+   768px  | Tablet portrait   - Twelve columns @ 44px,  20px gutters
+   980px  | Default grid      - Twelve columns @ 60px,  20px gutters
+   1200px | Large desktop     - Twelve columns @ 80px,  20px gutters
+   1920px | Widescreen HD     - Twelve columns @ 140px, 30px gutters
+
+   Layout
    ========================================================================== */
 
 .container {
   margin: 0 auto;
-  position: relative;
-  width: 940px;
+  *zoom: 1;
+}
+.container:before,
+.container:after {
+  display: table;
+  content: "";
+}
+.container:after {
+  clear: both;
 }
 .row {
-  margin-left: -20px;
   *zoom: 1;
 }
 .row:before,
@@ -24,6 +39,86 @@
 }
 .row:after {
   clear: both;
+}
+
+/* ==========================================================================
+   Responsive images
+   ========================================================================== */
+
+/*
+ * 1. Set a maxium relative to the parent.
+ * 2. IE7-8 need help adjusting responsive images.
+ * 3. Scale the height according to the width, otherwise you get stretching.
+ */
+
+img {
+  max-width: 100%; /* 1 */
+  width: auto\9; /* 2 */
+  height: auto; /* 3 */
+}
+
+/*
+ * Corrects images displayed in Google Maps.
+ */
+
+#map_canvas img {
+  max-width: none;
+}
+
+/* ==========================================================================
+   Responsive utility classes
+   ========================================================================== */
+
+.visible-phone {
+  display: none !important;
+}
+.visible-tablet {
+  display: none !important;
+}
+.hidden-desktop {
+  display: none !important;
+}
+.visible-desktop {
+  display: inherit !important;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important ;
+  }
+  .visible-tablet {
+    display: inherit !important;
+  }
+  .hidden-tablet {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important;
+  }
+  .visible-phone {
+    display: inherit !important;
+  }
+  .hidden-phone {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   960px/Default grid, IE 6-8 fallback
+   ========================================================================== */
+
+.container {
+  width: 940px;
+}
+.row {
+  margin-left: -20px;
 }
 .column {
   float: left;
@@ -124,19 +219,8 @@
   width: 940px;
 }
 
-/*
- * Breakpoints:
- *
- * 300px  | Mobile portrait   - Single column  @ 300px
- * 460px  | Mobile landscape  - Single column  @ 460px
- * 768px  | Tablet portrait   - Twelve columns @ 44px,  20px gutters
- * 960px  | Default grid.css  - Twelve columns @ 60px,  20px gutters
- * 1200px | Large desktop     - Twelve columns @ 80px,  20px gutters
- * 1920px | Widescreen HD     - Twelve columns @ 140px, 30px gutters
- */
-
 /* ==========================================================================
-   Mobile All
+   Mobile
    ========================================================================== */
 
 @media (max-width: 767px) {
@@ -523,73 +607,5 @@
   }
   .hd .five-fifths {
     width: 1890px;
-  }
-}
-
-/* ==========================================================================
-   Flexible images and media
-   ========================================================================== */
-
-img,
-object,
-embed,
-video {
-  height: auto;
-  max-width: 100%;
-}
-
-/*
- * IE 8 fix
- */
-
-.lt-ie9 img,
-.lt-ie9 object,
-.lt-ie9 embed,
-.lt-ie9 video {
-  max-width: auto;
-}
-
-/* ==========================================================================
-   Visibile/hidden classes
-   ========================================================================== */
-
-.visible-phone {
-  display: none !important;
-}
-.visible-tablet {
-  display: none !important;
-}
-.hidden-desktop {
-  display: none !important;
-}
-.visible-desktop {
-  display: inherit !important;
-}
-@media (min-width: 768px) and (max-width: 979px) {
-  .hidden-desktop {
-    display: inherit !important;
-  }
-  .visible-desktop {
-    display: none !important ;
-  }
-  .visible-tablet {
-    display: inherit !important;
-  }
-  .hidden-tablet {
-    display: none !important;
-  }
-}
-@media (max-width: 767px) {
-  .hidden-desktop {
-    display: inherit !important;
-  }
-  .visible-desktop {
-    display: none !important;
-  }
-  .visible-phone {
-    display: inherit !important;
-  }
-  .hidden-phone {
-    display: none !important;
   }
 }
