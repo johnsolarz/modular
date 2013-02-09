@@ -4,7 +4,7 @@
  *
  * Enqueue stylesheets in the following order:
  * 1. /theme/assets/css/base.css
- * 2. /theme/assets/css/grid-responsive.css
+ * 2. /theme/assets/css/grid.css
  * 3. /theme/assets/css/main.css
  * 4. /child-theme/style.css (if a child theme is activated)
  *
