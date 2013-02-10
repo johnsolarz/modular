@@ -12,20 +12,12 @@ body { }
 
 .banner { }
 
-/* Fixed Topbar Navigation */
-body.top-navbar { padding-top: 60px; }
-
 /**
  * Navbar
  */
 .navbar {
-  margin-bottom: 0;
   overflow: visible;
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  z-index: 1030;
+  margin-bottom: 20px;
   *position: relative;
   *z-index: 2;
 }
@@ -514,7 +506,6 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
   }
 }
 @media (max-width: 767px) {
-  /* Style adjustments for all mobile */
   body {
     padding-left: 20px;
     padding-right: 20px;
@@ -525,14 +516,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
   }
 }
 @media (max-width: 979px) {
-  /* Style adjustments up to tablet portrait */
-  body.top-navbar {
-    padding-top: 0;
-  }
-  .navbar {
-    margin-bottom: 20px;
-    position: static;
-  }
+  .navbar { }
   .navbar .container {
     width: auto;
     padding: 0;
@@ -614,7 +598,6 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
   }
 }
 @media (min-width: 980px) {
-  /* Style adjustments for default layout and up */
   .nav-collapse.collapse {
     height: auto !important;
     overflow: visible !important;
