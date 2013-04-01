@@ -35,7 +35,7 @@ add_filter( 'login_headertitle', 'custom_login_title', 10, 4 );
 // Add a custom dashboard widget
 add_action('wp_dashboard_setup', 'custom_add_dashboard_widgets');
 function custom_add_dashboard_widgets() {
-  wp_add_dashboard_widget( 'dashboard_custom_feed', 'From the News Desk at 8/7 Central', 'dashboard_custom_feed_output' );
+  wp_add_dashboard_widget( 'dashboard_custom_feed', 'From the News Desk at Eight Seven Central', 'dashboard_custom_feed_output' );
 }
 function dashboard_custom_feed_output() {
 	echo '<div class="rss-widget">';
@@ -53,7 +53,7 @@ function dashboard_custom_feed_output() {
 // Add footer credits
 add_filter( 'admin_footer_text', 'custom_admin_footer_text' );
 function custom_admin_footer_text( $default_text ) {
-	return '<span id="footer-thankyou">Design + Development by <a href="http://eightsevencentral.com">8/7 Central</a><span> &mdash; Powered by <a href="http://www.wordpress.org">WordPress</a>';
+	return '<span id="footer-thankyou">Design + Development by <a href="http://eightsevencentral.com">Eight Seven Central</a><span> &mdash; Powered by <a href="http://www.wordpress.org">WordPress</a>';
 }
 
 /**
