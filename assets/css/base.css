@@ -76,11 +76,11 @@ audio:not([controls]) {
  */
 
 html {
-    background: #fff; /* 1 */
-    color: #000; /* 2 */
-    font-size: 100%; /* 3 */
-    -webkit-text-size-adjust: 100%; /* 4 */
-    -ms-text-size-adjust: 100%; /* 4 */
+  background: #fff; /* 1 */
+  color: #000; /* 2 */
+  font-size: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 4 */
+  -ms-text-size-adjust: 100%; /* 4 */
 }
 
 /**
@@ -93,7 +93,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222;
 }
 
