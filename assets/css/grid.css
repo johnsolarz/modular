@@ -1,10 +1,4 @@
-/*!
- * grid.css
- *
- * Responsive twelve column grid system with IE 6-8 fallback
- * https://github.com/johnsolarz/css-grid-system
- * (c) Eight Seven Central
- */
+/*! grid.css | github.com/johnsolarz/css-grid-system */
 
 /* ==========================================================================
    Breakpoints
@@ -41,75 +35,6 @@
 }
 .row:after {
   clear: both;
-}
-
-/* ==========================================================================
-   Responsive images
-   ========================================================================== */
-
-/*
- * 1. Set a maxium relative to the parent.
- * 2. IE7-8 need help adjusting responsive images.
- * 3. Scale the height according to the width, otherwise you get stretching.
- */
-
-img {
-  max-width: 100%; /* 1 */
-  width: auto\9; /* 2 */
-  height: auto; /* 3 */
-}
-
-/*
- * Corrects images displayed in Google Maps.
- */
-
-#map_canvas img {
-  max-width: none;
-}
-
-/* ==========================================================================
-   Responsive utility classes
-   ========================================================================== */
-
-.visible-phone {
-  display: none !important;
-}
-.visible-tablet {
-  display: none !important;
-}
-.hidden-desktop {
-  display: none !important;
-}
-.visible-desktop {
-  display: inherit !important;
-}
-@media (min-width: 768px) and (max-width: 979px) {
-  .hidden-desktop {
-    display: inherit !important;
-  }
-  .visible-desktop {
-    display: none !important ;
-  }
-  .visible-tablet {
-    display: inherit !important;
-  }
-  .hidden-tablet {
-    display: none !important;
-  }
-}
-@media (max-width: 767px) {
-  .hidden-desktop {
-    display: inherit !important;
-  }
-  .visible-desktop {
-    display: none !important;
-  }
-  .visible-phone {
-    display: inherit !important;
-  }
-  .hidden-phone {
-    display: none !important;
-  }
 }
 
 /* ==========================================================================
@@ -609,5 +534,50 @@ img {
   }
   .hd .five-fifths {
     width: 1890px;
+  }
+}
+
+/* ==========================================================================
+   Responsive utility classes
+   ========================================================================== */
+
+.visible-phone {
+  display: none !important;
+}
+.visible-tablet {
+  display: none !important;
+}
+.hidden-desktop {
+  display: none !important;
+}
+.visible-desktop {
+  display: inherit !important;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important ;
+  }
+  .visible-tablet {
+    display: inherit !important;
+  }
+  .hidden-tablet {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important;
+  }
+  .visible-phone {
+    display: inherit !important;
+  }
+  .hidden-phone {
+    display: none !important;
   }
 }

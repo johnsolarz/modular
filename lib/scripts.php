@@ -15,8 +15,8 @@
  * 4. /theme/assets/js/main.js    (in footer)
  */
 function roots_scripts() {
-  wp_enqueue_style('roots_base', get_template_directory_uri() . '/assets/css/base.css', false, null);
-  wp_enqueue_style('roots_grid', get_template_directory_uri() . '/assets/css/grid.css', array('roots_base'), null);
+  wp_enqueue_style('roots_normalize', get_template_directory_uri() . '/assets/css/normalize.css', false, null);
+  wp_enqueue_style('roots_grid', get_template_directory_uri() . '/assets/css/grid.css', array('roots_normalize'), null);
   wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.css', false, null);
 
   // Load style.css from child theme
