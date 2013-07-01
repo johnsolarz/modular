@@ -5,6 +5,22 @@
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <!--
+
+  .....................................................................
+
+  Built by Eight Seven Central in Des Moines, Iowa.
+
+  .....................................................................
+
+  • This work is protected.
+  • http://eightsevencentral.com
+  • design@eightsevencentral.com
+  • @87central
+
+  .....................................................................
+
+  -->
   <title><?php wp_title('|', true, 'right'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
