@@ -13,10 +13,10 @@
 
   .....................................................................
 
-  • This work is protected.
-  • http://eightsevencentral.com
-  • design@eightsevencentral.com
-  • @87central
+  Hi.
+  http://eightsevencentral.com
+  design@eightsevencentral.com
+  @87central
 
   .....................................................................
 
