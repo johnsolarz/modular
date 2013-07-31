@@ -3,9 +3,8 @@
  * Enqueue scripts and stylesheets
  *
  * Enqueue stylesheets in the following order:
- * 1. /theme/assets/css/normalize.css
- * 2. /theme/assets/css/grid.css
- * 3. /theme/assets/css/main.css
+ * 1. /theme/assets/css/bootstrap.css
+ * 2. /theme/assets/css/app.css
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.10.2.min.js via Google CDN
@@ -14,9 +13,9 @@
  * 4. /theme/assets/js/main.js    (in footer)
  */
 function roots_scripts() {
-  wp_enqueue_style('roots_normalize', get_template_directory_uri() . '/assets/css/normalize.css', false, null);
-  wp_enqueue_style('roots_grid', get_template_directory_uri() . '/assets/css/grid.css', array('roots_normalize'), null);
-  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.css', false, null);
+  wp_enqueue_style('roots_bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css', false, null);
+  wp_enqueue_style('roots_app', get_template_directory_uri() . '/assets/css/app.css', false, null);
+
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
