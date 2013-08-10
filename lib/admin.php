@@ -3,7 +3,7 @@
  * Load wp-login.css on login page
  */
 function esc_login_css() {
-  echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/assets/css/wp-login.css">';
+  echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/assets/css/login.css">';
 }
 add_action('login_head', 'esc_login_css');
 

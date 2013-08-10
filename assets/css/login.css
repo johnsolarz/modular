@@ -6,7 +6,7 @@ body.login {
   background: #ececec;
 }
 .login h1 a {
-  background-image: url("../img/wp-login.png");
+  background-image: url("../img/login.png");
   background-size: 320px 220px;
   width: 320px;
   height: 220px;
