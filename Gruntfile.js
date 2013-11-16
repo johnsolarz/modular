@@ -9,7 +9,6 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'assets/js/*.js',
-        'assets/js/plugins/*.js',
         '!assets/js/scripts.min.js'
       ]
     },
@@ -22,7 +21,7 @@ module.exports = function(grunt) {
         },
         options: {
           compress: true,
-          // LESS source maps
+          // LESS source map
           // To enable, set sourceMap to true and update sourceMapRootpath based on your install
           sourceMap: false,
           sourceMapFilename: 'assets/css/main.min.css.map',
@@ -49,6 +48,11 @@ module.exports = function(grunt) {
             'assets/js/plugins/*.js',
             'assets/js/_*.js'
           ]
+        },
+        options: {
+          // JS source map: to enable, uncomment the lines below and update sourceMappingURL based on your install
+          // sourceMap: 'assets/js/scripts.min.js.map',
+          // sourceMappingURL: '/app/themes/roots/assets/js/scripts.min.js.map'
         }
       }
     },
