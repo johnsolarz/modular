@@ -4,6 +4,7 @@ node_modules
 
 # OS or Editor folders
 .DS_Store
+sftp-config.json
 *.sublime-project
 *.sublime-workspace
-*sftp-config.json
+
