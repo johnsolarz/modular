@@ -1,6 +1,7 @@
 # Include your project-specific ignores in this file
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 node_modules
+<<<<<<< HEAD
 
 # OS or Editor folders
 .DS_Store
@@ -8,3 +9,6 @@ sftp-config.json
 *.sublime-project
 *.sublime-workspace
 
+=======
+assets/css/main.min.css.map
+>>>>>>> upstream/master
