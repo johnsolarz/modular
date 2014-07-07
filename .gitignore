@@ -1,9 +1,12 @@
 # Include your project-specific ignores in this file
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 node_modules
-assets/css/main.min.css.map
-
-# OS or Editor folders
+assets/vendor/*
+assets/css/main.css.map
+assets/css/*main*.css
+assets/js/*scripts*.js
+assets/js/vendor/modernizr.min.js
+assets/manifest.json
 .DS_Store
 sftp-config.json
 *.sublime-project
