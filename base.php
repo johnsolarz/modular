@@ -12,9 +12,9 @@
     get_template_part('templates/header');
   ?>
 
-  <div class="wrap container" role="document">
-    <div class="content row">
-      <main class="main <?php echo roots_main_class(); ?>" role="main">
+  <div class="wrap<?php if(roots_display_sidebar()) { echo ' container'; } ?>" role="document">
+    <div class="content<?php if(roots_display_sidebar()) { echo ' row'; } ?>">
+      <main id="main" class="main<?php if(roots_display_sidebar()) { echo ' ' . roots_main_class(); } ?>" role="main">
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
       <?php if (roots_display_sidebar()) : ?>

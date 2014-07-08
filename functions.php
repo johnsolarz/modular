@@ -32,3 +32,15 @@ foreach ($roots_includes as $file) {
   require_once $filepath;
 }
 unset($file, $filepath);
+
+/**
+ * Modular includes
+ *
+ * Adds ACF dependencies if plugin is activated in plugin directory.
+ */
+if (function_exists('get_field')) :
+  //define( 'ACF_LITE', true );                                    // Hide ACF UI
+  //include_once('modular/advanced-custom-fields-pro/acf.php');    // Include ACF in theme
+  //require_once locate_template('/modular/fields.php');           // Register ACF field groups in theme
+  require_once locate_template('/modular/options.php');            // Options page, social components
+endif;
