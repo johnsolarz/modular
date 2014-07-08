@@ -5,18 +5,8 @@
 
   <!--
 
-  .....................................................................
-
-  Built by Eight Seven Central in Des Moines, Iowa.
-
-  .....................................................................
-
-  Hi.
+  Built by a couple of folks in Des Moines, Iowa.
   http://eightsevencentral.com
-  design@eightsevencentral.com
-  @87central
-
-  .....................................................................
 
   -->
 
