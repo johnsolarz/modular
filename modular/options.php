@@ -16,7 +16,7 @@ if(function_exists('acf_add_options_page')) {
 /**
  * Load options page webfont snippet and styles in head:
  *  - Colors
- *  - Logo
+ *  - Logo (in .navbar)
  *  - Typography
  */
 function acf_options_page_styles() {

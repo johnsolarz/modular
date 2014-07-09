@@ -3,7 +3,7 @@
  * Section module
  *
  * Include in your theme template: <?php get_template_part('modular/templates/section'); ?>
- * Loops through Section > Column > Content: Title, Text, Image, Embed, List, Table, Gallery, Blockquote, Horizontal Line, Filter + Loop, Loop
+ * Loops through Sections > Columns > Content: Title, Text, Image, Embed, List, Table, Gallery, Blockquote, Horizontal Line, Filter + Loop, Loop
  */
 // Section repeater
 if(get_field('section')):

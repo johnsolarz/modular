@@ -1,9 +1,10 @@
 <?php
 /**
  * Google Maps JavaScript API v3
- * @link https://developers.google.com/maps/documentation/javascript/tutorial
+ * https://developers.google.com/maps/documentation/javascript/tutorial
  *
- * Inlcude Google Maps API: <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWbvi54jLIjQ7ZoJgqtHG9i3ZTZu1wtfk&sensor=false"></script>
+ * Inlcude Google Maps key:
+ * <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWbvi54jLIjQ7ZoJgqtHG9i3ZTZu1wtfk&sensor=false"></script>
  */
 ?>
 <div style="height:600px;">

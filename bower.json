@@ -17,12 +17,12 @@
     "jquery": "1.11.1",
     "bootstrap": "3.2.0",
     "respond": "1.4.2",
-    "imagesloaded": ">=3.1.6",
-    "isotope": ">=2.0.0",
-    "jquery-easing-original": ">=1.3.0",
-    "fitvids": ">=1.0.3",
-    "FlexSlider": ">=2.2.2",
-    "fluidbox": ">=1.3.2",
-    "picturefill": ">=2.0.0",
+    "imagesloaded": "~3.1.8",
+    "isotope": "~2.0.0",
+    "jquery-easing-original": "~1.3.1",
+    "fitvids": "~1.1.0",
+    "fluidbox": "~1.3.3",
+    "picturefill": "~2.0.0",
+    "fontawesome": "~4.1.0"
   }
 }

@@ -3,7 +3,7 @@
  * Section footer module
  *
  * Include in your theme template: <?php get_template_part('modular/templates/section', 'footer'); ?>
- * Loops through Section > Column > Content: Title, Text, Image, Blockquote, Horizontal Line, Menu
+ * Loops through Sections > Columns > Content: Title, Text, Image, Blockquote, Horizontal Line, Menu
  */
 // Section repeater
 if(get_field('section_footer', 'option')):

@@ -1,6 +1,6 @@
 <?php
 /**
- * Cover video module
+ * Video module
  *
  * Include in your theme template: <?php get_template_part('modular/templates/cover-video'); ?>
  * Fullscreen ambient video with bigvideo.js. Requires:
