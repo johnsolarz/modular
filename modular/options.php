@@ -1,14 +1,6 @@
 <?php
 /**
- * Register multiple options pages by filter.
- *
- * @link http://www.advancedcustomfields.com/resources/filters/acfoptions_pagesettings/
- *
- * This hook allows you to modify setting for the options page add-on. The settings available are:
- *
- * - title: the title which appears in the WP admin menu item. Defaults to ‘Options’
- * - capability: the capability to view options page. Defaults to ‘edit_posts’
- * - pages: an array of sub page titles. defaults to an empty array
+ * Register multiple options pages
  */
 if(function_exists('acf_add_options_page')) {
 
@@ -23,11 +15,9 @@ if(function_exists('acf_add_options_page')) {
 
 /**
  * Load options page webfont snippet and styles in head:
- * - Logo, colors, typography
- *
- * Requires ACF, addons and fields: @see fields.php
- * - Advanced Custom Fields (http://www.advancedcustomfields.com)
- * - Options Page (http://www.advancedcustomfields.com/add-ons/options-page/)
+ *  - Colors
+ *  - Logo
+ *  - Typography
  */
 function acf_options_page_styles() {
 
@@ -103,26 +93,18 @@ add_action('wp_head', 'acf_options_page_styles');
 
 /**
  * Display social media sharing buttons and load scripts in footer
- *
- * Use in template: <?php if (function_exists('esc_social_sharing')) { esc_social_sharing(); } ?>
- *
- * Requires ACF, addons and fields: @see fields.php
- * - Advanced Custom Fields (http://www.advancedcustomfields.com)
- * - Options Page (http://www.advancedcustomfields.com/add-ons/options-page/)
  */
-// Social Media share button options (T/F)
+// Social media share button options (T/F)
 $facebook_share  = get_field('facebook_share', 'option');
 $google_share    = get_field('google_share', 'option');
 $linkedin_share  = get_field('linkedin_share', 'option'); // Inline in social-sharing.php
 $pinterest_share = get_field('pinterest_share', 'option');
 $twitter_share   = get_field('twitter_share', 'option');
 
-/**
- * Output scripts one by one in footer
- *
- * HTML tags should be in the templates when possible:
- * @todo https://github.com/retlehs/roots/pull/554
- */
+// Output scripts in footer
+//
+// HTML tags should be in the templates when possible:
+// https://github.com/retlehs/roots/pull/554
 if ($facebook_share) {
   function facebook_share_script() {
     echo "\n\t<div id=\"fb-root\"></div>\n";

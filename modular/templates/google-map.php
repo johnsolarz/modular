@@ -1,16 +1,9 @@
 <?php
 /**
  * Google Maps JavaScript API v3
- *
  * @link https://developers.google.com/maps/documentation/javascript/tutorial
  *
- * Requires:
- * - Custom post type, example: location. @see lib/custom.php
- * - ACF Repeater Field (http://www.advancedcustomfields.com/add-ons/repeater-field)
- * - ACF Location Field (https://github.com/elliotcondon/acf-location-field)
- * - Google Maps API (<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWbvi54jLIjQ7ZoJgqtHG9i3ZTZu1wtfk&sensor=false"></script>)
- *
- * @return google map with multiple location markers and info windows.
+ * Inlcude Google Maps API: <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWbvi54jLIjQ7ZoJgqtHG9i3ZTZu1wtfk&sensor=false"></script>
  */
 ?>
 <div style="height:600px;">

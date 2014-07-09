@@ -1,14 +1,9 @@
 <?php
 /**
- * Cover slideshow module. Supports title, text, background color, image and embed slides
+ * Cover slideshow module
  *
- * Requires ACF, addons and fields: @see fields.php
- * - Advanced Custom Fields (http://www.advancedcustomfields.com)
- * - ACF Repeater Field (http://www.advancedcustomfields.com/add-ons/repeater-field)
- * - ACF Flexible Content Field (http://www.advancedcustomfields.com/add-ons/flexible-content-field)
- *
- * Requires jQuery plugins and scripts: @see _main.js
- * - RoyalSlider (http://dimsemenov.com/plugins/royal-slider/documentation/)
+ * Include in your theme template: <?php get_template_part('modular/templates/cover', 'slideshow'); ?>
+ * Requires RoyalSlider: http://dimsemenov.com/plugins/royal-slider/documentation
  */
 // Cover repeater (max 1)
 if(get_field('cover_slideshow')):

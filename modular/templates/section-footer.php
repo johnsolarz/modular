@@ -1,29 +1,19 @@
 <?php
 /**
- * Loops through footer section repeater, columns and flexible content modules:
- *  - Title, Text, Image, Blockquote, Horizontal Line, Menu
+ * Section footer module
  *
- * Requires ACF, addons and fields: @see fields.php
- * - Advanced Custom Fields (http://www.advancedcustomfields.com)
- * - ACF Repeater Field (http://www.advancedcustomfields.com/add-ons/repeater-field)
- * - ACF Flexible Content Field (http://www.advancedcustomfields.com/add-ons/flexible-content-field)
- *
- * Requires jQuery plugins and scripts: @see _main.js
- * - Isotope filtering, sorting and layout library (http://isotope.metafizzy.co/beta)
- * - FitVids fluid width video embeds (https://github.com/davatron5000/FitVids.js)
- * - FlexSlider jQuery slider (http://www.woothemes.com/flexslider)
- * - Fluidbox lightbox images (https://github.com/terrymun/Fluidbox)
- * - Optional: Picturefill responsive images (https://github.com/scottjehl/picturefill)
+ * Include in your theme template: <?php get_template_part('modular/templates/section', 'footer'); ?>
+ * Loops through Section > Column > Content: Title, Text, Image, Blockquote, Horizontal Line, Menu
  */
-// Section module repeater
-if(get_field('footer_section', 'option')):
+// Section repeater
+if(get_field('section_footer', 'option')):
 
-  while(has_sub_field('footer_section', 'option')):
+  while(has_sub_field('section_footer', 'option')):
 
-  $id      = sanitize_title(get_sub_field('footer_section_id'));
-  $class   = strtolower(get_sub_field('footer_section_class')); // default, hidden, other
-  $wrapper = get_sub_field('footer_section_wrapper'); // container, container fullwidth
-  $layout  = get_sub_field('footer_section_layout'); // row
+  $id      = sanitize_title(get_sub_field('section_id'));
+  $class   = strtolower(get_sub_field('section_class')); // default, hidden, other
+  $wrapper = get_sub_field('section_wrapper'); // container, container fullwidth
+  $layout  = get_sub_field('section_layout'); // row
 
   if($class != 'hidden'):
 ?>

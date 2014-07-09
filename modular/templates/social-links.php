@@ -1,11 +1,10 @@
 <?php
 /**
- * Social media links.
+ * Social media links module
  *
- * Requires ACF, addons and fields: @see fields.php
- * - Advanced Custom Fields (http://www.advancedcustomfields.com)
- * - Options Page (http://www.advancedcustomfields.com/add-ons/options-page/)
+ * Include in your theme template: <?php get_template_part('modular/templates/social', 'links'); ?>
  */
+// URL values
 $facebook_link  = get_field('facebook_link', 'option');
 $facebook_text  = get_field('facebook_link_text', 'option');
 $google_link    = get_field('google_link', 'option');

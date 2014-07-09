@@ -1,13 +1,9 @@
 <?php
 /**
- * Cover video module. Fullscreen ambient video with bigvideo.js.
+ * Cover video module
  *
- * Requires ACF, addons and fields: @see fields.php
- * - Advanced Custom Fields (http://www.advancedcustomfields.com)
- * - ACF Repeater Field (http://www.advancedcustomfields.com/add-ons/repeater-field)
- * - ACF Flexible Content Field (http://www.advancedcustomfields.com/add-ons/flexible-content-field)
- *
- * Requires jQuery plugins and scripts: @see _main.js
+ * Include in your theme template: <?php get_template_part('modular/templates/cover-video'); ?>
+ * Fullscreen ambient video with bigvideo.js. Requires:
  * - video.js (https://github.com/videojs/video.js/blob/stable/docs/guides/setup.md)
  * - bigVideo.js (https://github.com/dfcb/BigVideo.js)
  * - jQuery 1.7.2 or higher
@@ -17,20 +13,20 @@
  * - bv-slider.js
  */
 // Cover repeater (max 1)
-if(get_field('cover_video')):
+if(get_field('video')):
 
-  while(has_sub_field('cover_video')):
+  while(has_sub_field('video')):
 
-  $class  = strtolower(get_sub_field('cover_video_class')); // default, hidden, other
-  $height = get_sub_field('cover_video_height'); // default, 50%, 100%, other
-  $width  = get_sub_field('cover_video_text_width');
-  $offset = get_sub_field('cover_video_text_offset');
-  $color  = get_sub_field('cover_video_text_color');
-  $title  = get_sub_field('cover_video_title'); // title, none, other
-  $text   = get_sub_field('cover_video_text'); // excerpt, none, other
-  $image  = get_sub_field('cover_video_image');
-  $mp4    = get_sub_field('cover_video_mp4');
-  $webm   = get_sub_field('cover_video_webm');
+  $class  = strtolower(get_sub_field('video_class')); // default, hidden, other
+  $height = get_sub_field('video_height'); // default, 50%, 100%, other
+  $width  = get_sub_field('video_text_width');
+  $offset = get_sub_field('video_text_offset');
+  $color  = get_sub_field('video_text_color');
+  $title  = get_sub_field('video_title'); // title, none, other
+  $text   = get_sub_field('video_text'); // excerpt, none, other
+  $image  = get_sub_field('video_image');
+  $mp4    = get_sub_field('video_mp4');
+  $webm   = get_sub_field('video_webm');
 
   if($class != 'hidden'):
 ?>

@@ -1,22 +1,12 @@
 <?php
 /**
- * Loops through flexible content modules:
- * - Title, Lead Text, Text, Image, Embed, List, Table, Gallery, Blockquote, Horizontal Line
+ * Content module
  *
- * Requires ACF, addons and fields: @see fields.php
- * - Advanced Custom Fields (http://www.advancedcustomfields.com)
- * - ACF Repeater Field (http://www.advancedcustomfields.com/add-ons/repeater-field)
- * - ACF Flexible Content Field (http://www.advancedcustomfields.com/add-ons/flexible-content-field)
- *
- * Requires jQuery plugins and scripts: @see _main.js
- * - Isotope filtering, sorting and layout library (http://isotope.metafizzy.co/beta)
- * - FitVids fluid width video embeds (https://github.com/davatron5000/FitVids.js)
- * - FlexSlider jQuery slider (http://www.woothemes.com/flexslider)
- * - Fluidbox lightbox images (https://github.com/terrymun/Fluidbox)
- * - Optional: Picturefill responsive images (https://github.com/scottjehl/picturefill)
+ * Include in your theme template: <?php get_template_part('modular/templates/content'); ?>
+ * Loops through content: Title, Text, Image, Embed, List, Table, Gallery, Blockquote, Horizontal Line
  */
-// Flexible content
-while(has_sub_field('post_content')):
+// Content repeater
+while(has_sub_field('content')):
 
   // Title content
   if(get_row_layout() == 'title'):

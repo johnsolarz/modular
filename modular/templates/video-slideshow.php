@@ -1,13 +1,9 @@
 <?php
 /**
- * Cover video slideshow module. Fullscreen ambient video slideshow with bigvideo.js.
+ * Video slideshow module
  *
- * Requires ACF, addons and fields: @see fields.php
- * - Advanced Custom Fields (http://www.advancedcustomfields.com)
- * - ACF Repeater Field (http://www.advancedcustomfields.com/add-ons/repeater-field)
- * - ACF Flexible Content Field (http://www.advancedcustomfields.com/add-ons/flexible-content-field)
- *
- * Requires jQuery plugins and scripts: @see _main.js
+ * Include in your theme template: <?php get_template_part('modular/templates/video', 'slideshow'); ?>
+ * Fullscreen ambient video slideshow with bigvideo.js. Requires:
  * - video.js (https://github.com/videojs/video.js/blob/stable/docs/guides/setup.md)
  * - bigVideo.js (https://github.com/dfcb/BigVideo.js)
  * - jQuery 1.7.2 or higher
@@ -17,12 +13,12 @@
  * - bv-slider.js
  */
 // Cover repeater (max 1)
-if(get_field('cover_video_slideshow')):
+if(get_field('video_slideshow')):
 
-  while(has_sub_field('cover_video_slideshow')):
+  while(has_sub_field('video_slideshow')):
 
-  $class  = strtolower(get_sub_field('cover_video_slideshow_class')); // default, hidden, other
-  $height = get_sub_field('cover_video_slideshow_height'); // default, 50%, 100%, other
+  $class  = strtolower(get_sub_field('video_slideshow_class')); // default, hidden, other
+  $height = get_sub_field('video_slideshow_height'); // default, 50%, 100%, other
 
   if($class != 'hidden'):
 ?>

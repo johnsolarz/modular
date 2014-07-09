@@ -1,28 +1,26 @@
 <?php
 /**
- * Social media sharing buttons.
+ * Social media sharing buttons module
  *
- * Requires ACF, addons and fields: @see fields.php
- * - Advanced Custom Fields (http://www.advancedcustomfields.com)
- * - Options Page (http://www.advancedcustomfields.com/add-ons/options-page/)
+ * Include in your theme template: <?php get_template_part('modular/templates/social', 'sharing'); ?>
  */
-  // Social Media share button options (T/F)
-  $facebook_share  = get_field('facebook_share', 'option');
-  $google_share    = get_field('google_share', 'option');
-  $linkedin_share  = get_field('linkedin_share', 'option');
-  $pinterest_share = get_field('pinterest_share', 'option');
-  $twitter_share   = get_field('twitter_share', 'option');
+// Social media share button options (T/F)
+$facebook_share  = get_field('facebook_share', 'option');
+$google_share    = get_field('google_share', 'option');
+$linkedin_share  = get_field('linkedin_share', 'option');
+$pinterest_share = get_field('pinterest_share', 'option');
+$twitter_share   = get_field('twitter_share', 'option');
 
-  // Grab twitter handle from the link value
-  $twitter_link        = get_field('twitter_link', 'option');
-  $twitter_handle_opts = array('https://twitter.com/','http://twitter.com/');
-  $twitter_handle      = str_replace( $twitter_handle_opts,'', $twitter_link  );
+// Grab twitter handle from the link value
+$twitter_link        = get_field('twitter_link', 'option');
+$twitter_handle_opts = array('https://twitter.com/','http://twitter.com/');
+$twitter_handle      = str_replace( $twitter_handle_opts,'', $twitter_link  );
 
-  // Other useful post info
-  $title     = get_the_title();
-  $permalink = get_permalink();
+// Other useful post info
+$title     = get_the_title();
+$permalink = get_permalink();
 
-  if ($facebook_share || $google_share || $linkedin_share || $pinterset_share || $twitter_share) :
+if ($facebook_share || $google_share || $linkedin_share || $pinterset_share || $twitter_share) :
 ?>
   <div class="share-module">
     <div class="inner">
