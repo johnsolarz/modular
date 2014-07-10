@@ -142,8 +142,7 @@ module.exports = function(grunt) {
         // Browser live reloading
         // https://github.com/gruntjs/grunt-contrib-watch#live-reloading
         options: {
-          livereload: false,
-          debounceDelay: 5000 // add delay for slow connections
+          livereload: false
         },
         files: [
           'assets/css/main.css',
