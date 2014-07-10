@@ -1,0 +1,169 @@
+// Cover
+.cover-module {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  .cover-slide {
+    opacity: 0; // Animated after imagesLoaded
+  }
+
+  .container {
+    position: relative; // Enable abosulte positioned cover-module__text
+  }
+
+  .cover-slide__text {
+    display: none;
+    opacity: 0; // Animated after imagesLoaded
+    padding-top: 2em;
+  }
+}
+
+// Cover Slideshow
+.cover-slideshow {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  // Royalslider
+  .royalSlider {
+    width: 100%;
+    height: 100%;
+    > .rsContent {
+      visibility: hidden; /* or display:none depending on your needs... Prevents flicker on load */
+    }
+
+    .rsABlock {
+      top: auto; // top: auto; to use bottom positioning
+      right: 0; // Enable container position inside rsABlock
+      bottom: 50px;
+    }
+  }
+}
+
+// Cover Video and Cover Video Slideshow
+.cover-video,
+.cover-video--slideshow {
+
+  .container {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+// Cover Video Slideshow
+.cover-video--slideshow {
+
+  .wrapper {
+    position: relative;
+    width: 500%; // NOTE: numVideos*100%
+    height: 100%;
+    z-index: 0;
+  }
+
+  .cover-slide {
+    position: relative;
+    height: 100%;
+    width: 20%; // NOTE: numVideos/100%
+    float: left;
+    overflow: hidden;
+  }
+}
+
+// Cover scroll buttons
+.scroll-btn {
+  border-bottom: none;
+  height: 42px;
+  position: absolute;
+  text-align: center;
+  width: 42px;
+  z-index: 1000;
+
+  &:hover {
+    border-bottom: none;
+    opacity: 1 !important; // Overrides js animated opacity
+  }
+
+  &.scroll-btn--up {
+    top: 0;
+    left: 50%;
+    margin-left: -21px;
+  }
+
+  &.scroll-btn--right {
+    right: 20px;
+    top: 50%;
+    margin-top: -21px;
+  }
+
+  &.scroll-btn--down {
+    bottom: -42px; // Icon height animated on imagesLoaded
+    left: 50%;
+    margin-left: -21px;
+  }
+
+  &.scroll-btn--left {
+    left: 20px;
+    top: 50%;
+    margin-top: -21px;
+  }
+}
+
+// Section Module
+.section-module { }
+
+// Title Module
+.title-module { }
+
+// Text Module
+.text-module { }
+
+// Image Module
+.image-module { }
+
+// Embed Module
+.embed-module { }
+
+// List Module
+.list-module { }
+
+// Table Module
+.table-module { }
+
+// Gallery Module
+.gallery-module { }
+
+// Blockquote Module
+.blockquote-module { }
+
+// Filter Module
+.filter-module { }
+
+// Loop Module
+.loop-module { }
+
+// Horizontal Line Module
+.line-module { }
+
+// Menu Module
+.menu-module { }
+
+// Share module
+.share-module {
+
+  // Remove any borders and fix alignment issues
+  a {
+    border: none;
+    img {
+      vertical-align: top;
+    }
+  }
+  .fb-like {
+    margin-top: -8px;
+    vertical-align: top !important;
+  }
+}

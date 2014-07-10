@@ -1,0 +1,74 @@
+// Fullwidth, fullscreen setup
+html, body {
+  height: 100%;
+}
+
+// Fullwidth container and images
+.fullwidth,
+.fullwidth img {
+  width: 100%;
+}
+
+// Fullscreen container
+.fullscreen {
+  width: 100%;
+  min-height: 100%;
+
+  // no-overflow class added via js
+  &.no-overflow {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+// Fullscreen images
+.fullscreen-image {
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+}
+
+// Background images setup
+// Parallax images needs to be added inline with data-img-width and data-img-height
+.background-image {
+  background-repeat: no-repeat;
+  background-position: 50% 50%; // set custom background-position as needed
+  background-position: 50% 50%\9 !important; // keep for ie8 graceful degradation
+
+  &.fixed {
+    background-attachment: fixed;
+  }
+}
+
+// Restore Google Map images
+#map-canvas img {
+  display: inherit;
+  max-width: inherit;
+}
+
+// Down and dirty clear class
+.clear {
+  clear: both;
+}
+
+// Fade in isotope container on imagesLoaded
+.isotope {
+  display: none;
+}
+
+// Justified lists
+.list-justified {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+
+  > li {
+    float: none;
+
+    @media screen and (min-width: @grid-float-breakpoint) {
+      display: table-cell;
+      width: 1%;
+    }
+  }
+}

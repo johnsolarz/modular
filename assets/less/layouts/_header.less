@@ -1,1 +1,50 @@
 .banner { }
+
+// Scrolling class added via js
+.navbar-scrolling { }
+
+// Hidden class added and animated via js
+.navbar-hidden {
+  top: -(@navbar-height + 1);
+}
+
+// Retina logo, vertically centered
+/*.navbar-brand {
+  background-image: url('../img/logo-2x.png');
+  background-size: 100px 50px;
+  background-repeat: no-repeat;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  text-indent: -9999px;
+  width: 100px;
+  height: 50px;
+  .navbar-vertical-align(50px);
+}*/
+
+// Simplify navbar toggle
+.navbar-toggle {
+  border: 0;
+  border-radius: 0;
+
+  .icon-bar {
+    height: 3px;
+    border-radius: 0;
+  }
+
+  .icon-bar + .icon-bar {
+    margin-top: 3px;
+  }
+}
+
+.navbar-default {
+  .navbar-toggle {
+    border-color: transparent;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      outline: none;
+    }
+  }
+}
