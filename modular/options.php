@@ -1,6 +1,6 @@
 <?php
 /**
- * Register multiple options pages
+ * Register options pages
  */
 if(function_exists('acf_add_options_page')) {
 
@@ -14,10 +14,7 @@ if(function_exists('acf_add_options_page')) {
 }
 
 /**
- * Load options page webfont snippet and styles in head:
- *  - Colors
- *  - Logo (in .navbar)
- *  - Typography
+ * Load options page styles in head: Colors, Logo, Typography
  */
 function acf_options_page_styles() {
 
