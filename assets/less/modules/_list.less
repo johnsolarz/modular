@@ -1,0 +1,17 @@
+.list-module { }
+
+// Justified lists
+.list-justified {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+
+  > li {
+    float: none;
+
+    @media screen and (min-width: @grid-float-breakpoint) {
+      display: table-cell;
+      width: 1%;
+    }
+  }
+}

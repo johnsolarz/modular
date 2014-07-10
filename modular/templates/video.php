@@ -3,14 +3,7 @@
  * Video module
  *
  * Include in your theme template: <?php get_template_part('modular/templates/cover-video'); ?>
- * Fullscreen ambient video with bigvideo.js. Requires:
- * - video.js (https://github.com/videojs/video.js/blob/stable/docs/guides/setup.md)
- * - bigVideo.js (https://github.com/dfcb/BigVideo.js)
- * - jQuery 1.7.2 or higher
- * - jQuery UI slider 1.8.22 or higher
- * - Video.js 3.2 or higher
- * - imagesloaded 2.1.1 or higher
- * - bv-slider.js
+ * Fullscreen ambient video, @link https://github.com/dfcb/BigVideo.js
  */
 // Cover repeater (max 1)
 if(get_field('video')):

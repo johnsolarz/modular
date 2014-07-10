@@ -1,0 +1,96 @@
+.gallery-module { }
+
+// Flexslider gallery images and blockquote repeater
+.flexslider {
+  background: none;
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  // Direction nav
+  .flex-direction-nav {
+    a {
+      border-bottom: none;
+      height: 42px;
+      margin-top: -30px;
+      text-shadow: none;
+
+      // Use FontAwesone icons instead
+      &:before,
+      &.flex-next:before {
+        content: none;
+      }
+    }
+
+    .flex-prev {
+      left: -(@grid-gutter-width / 2);
+    }
+
+    .flex-next {
+      right: -(@grid-gutter-width / 2);
+    }
+  }
+
+  // Control nav
+  .flex-control-nav {
+    // bottom: 40px; Overlays nav on slide
+  }
+
+  .flex-control-paging li a {
+    border-bottom: none;
+    background: @gray-light;
+    width: 16px;
+    height: 16px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    &:hover {
+      background: @gray;
+    }
+
+    &.flex-active {
+      background: @text-color;
+    }
+  }
+
+  // Prevent 'show arrows' default on small screens
+  @media screen and (max-width: 860px) {
+    .flex-direction-nav {
+
+      .flex-prev {
+        opacity: 0;
+        //left: (@grid-gutter-width / 2);
+      }
+
+      .flex-next {
+        opacity: 0;
+        //right: (@grid-gutter-width / 2);
+      }
+    }
+  }
+
+  // Animation and opacity on flexslider hover
+  &:hover {
+
+    .flex-prev {
+      opacity: 0.7;
+      left: (@grid-gutter-width / 2);
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .flex-next {
+      opacity: 0.7;
+      right: (@grid-gutter-width / 2);
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -22,7 +22,7 @@ $permalink = get_permalink();
 
 if ($facebook_share || $google_share || $linkedin_share || $pinterset_share || $twitter_share) :
 ?>
-  <div class="share-module">
+  <div class="social-sharing-module">
     <div class="inner">
       <ul class="list-inline">
         <?php

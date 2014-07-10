@@ -1,0 +1,42 @@
+.cover-slideshow {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  // Royalslider core styling
+  .royalSlider {
+    width: 100%;
+    height: 100%;
+    > .rsContent {
+      visibility: hidden; /* or display:none depending on your needs... Prevents flicker on load */
+    }
+
+    .rsABlock {
+      top: auto; // top: auto; to use bottom positioning
+      right: 0; // Enable container position inside rsABlock
+      bottom: 50px;
+    }
+  }
+}
+
+// Royalslider default theme styling
+.rsDefault,
+.rsDefault .rsOverflow,
+.rsDefault .rsSlide,
+.rsDefault .rsVideoFrameHolder,
+.rsDefault .rsThumbs {
+  background: #fff;
+  color: #fff;
+}
+
+.rsDefault .rsArrowIcn,
+.rsDefault .rsThumbsArrowIcn,
+.rsDefault .rsFullscreenIcn,
+.rsDefault .rsPlayBtnIcon,
+.rsDefault .rsCloseVideoIcn {
+  background-image: url('../img/rs-default.png');
+}
+
+.rsDefault .rsPreloader {
+  background-image: url('../img/preloader.gif');
+}

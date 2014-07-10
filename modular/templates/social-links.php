@@ -24,6 +24,7 @@ $vimeo_text     = get_field('vimeo_link_text', 'option');
 $email_link     = get_field('email_link', 'option');
 $email_text     = get_field('email_link_text', 'option');
 
+echo '<div class="social-links-module">';
 echo '<ul class="list-inline">';
 if($facebook_link) {
   echo '<li><a href="' . $facebook_link . '"><i class="fa fa-facebook-square"></i>' . (($facebook_text)?' ' . $facebook_text:'') . '</a></li>';
@@ -52,4 +53,6 @@ if($vimeo_link) {
 if($email_link) {
   echo '<li><a href="' . $email_link . '"><i class="fa fa-envelope"></i>' . (($email_text)?' ' . $email_text:'') . '</a></li>';
 }
+echo '</ul>';
+echo '</div>';
 ?>
