@@ -34,13 +34,26 @@ foreach ($roots_includes as $file) {
 unset($file, $filepath);
 
 /**
- * Modular includes
+ * Include Advanced Custom Fields in theme
  *
- * Adds ACF dependencies if plugin is activated in plugin directory.
+ * Hook in and customize the url / path to match our environment and optionally hide the admin UI.
+ * http://support.advancedcustomfields.com/forums/topic/acf-5-pro-wonky-admin-styles/
  */
-if (function_exists('get_field')) :
-  //define( 'ACF_LITE', true );                                    // Hide ACF UI
-  //include_once('modular/advanced-custom-fields-pro/acf.php');    // Include ACF in theme
-  //require_once locate_template('/modular/fields.php');           // Register ACF field groups in theme
-  require_once locate_template('/modular/options.php');            // Options page, social components
-endif;
+
+add_filter('acf/settings/dir', function( $dir ){
+  return get_template_directory_uri() . '/modular/advanced-custom-fields-pro/';
+});
+
+add_filter('acf/settings/path', function( $path ){
+  return get_theme_root() . '/' . get_template() . '/modular/advanced-custom-fields-pro/';
+});
+
+add_filter('acf/settings/show_admin', function( $path ){
+  return true; // Set false to hide UI in admin
+});
+
+include_once('modular/advanced-custom-fields-pro/acf.php');    // ACF5 Pro plugin
+require_once locate_template('/modular/options.php');          // Options pages and styles
+require_once locate_template('/modular/fields.php');           // Locally registered field groups
+
+
