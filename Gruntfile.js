@@ -18,6 +18,13 @@ module.exports = function(grunt) {
     'assets/vendor/bootstrap/js/scrollspy.js',
     'assets/vendor/bootstrap/js/tab.js',
     'assets/vendor/bootstrap/js/affix.js',
+    'assets/vendor/fitvids/jquery.fitvids.js',
+    'assets/vendor/flexslider/jquery.flexslider-min.js',
+    'assets/vendor/fluidbox/jquery.fluidbox.min.js',
+    'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js',
+    'assets/vendor/isotope/dist/isotope.pkgd.min.js',
+    'assets/vendor/jquery-easing-original/jquery.easing.1.3.min.js',
+    'assets/vendor/picturefill/dist/picturefill.min.js',
     'assets/js/plugins/*.js',
     'assets/js/_*.js'
   ];
