@@ -23,6 +23,7 @@
     "fitvids": "~1.1.0",
     "fluidbox": "~1.3.3",
     "picturefill": "~2.0.0",
-    "fontawesome": "~4.1.0"
+    "fontawesome": "~4.1.0",
+    "flexslider": "*"
   }
 }
