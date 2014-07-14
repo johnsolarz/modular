@@ -11,14 +11,13 @@ if(get_field('section')):
   while(has_sub_field('section')):
 
   $id      = sanitize_title(get_sub_field('section_id'));
-  $class   = strtolower(get_sub_field('section_class')); // default, hidden, other
+  $class   = strtolower(get_sub_field('section_class'));
   $wrapper = get_sub_field('section_wrapper'); // container, container fullwidth
   $layout  = get_sub_field('section_layout'); // row, row isotope
 
-  if($class != 'hidden'):
 ?>
 
-  <section <?php if($id) { echo 'id="' . $id . '"'; } ?> class="section-module<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>">
+  <section id="<?php if($id) { echo $id; } ?>" class="section-module<?php if($class) { echo ' ' . $class; } ?>">
 
     <div class="<?php echo $wrapper; ?>">
 
@@ -40,7 +39,7 @@ if(get_field('section')):
           $offset = get_sub_field('column_offset');
         ?>
 
-          <div class="<?php echo (($width == 'default')?'col-xs-6 col-sm-3':$width) . ' ' . (($offset == 'default')?'':$offset) . (($class == 'default')?'': ' ' . $class) . (($layout == 'row isotope')?' isotope-item':''); ?>">
+          <div class="<?php if($width) { echo $width; } if($offset) { echo ' ' . $offset; } if($class) { echo ' ' . $class; } if($layout == 'row isotope') { echo ' isotope-item'; } ?>">
 
             <?php
               // Flexible content
@@ -49,13 +48,13 @@ if(get_field('section')):
               // Title content
               if(get_row_layout() == 'title'):
 
-              $class = strtolower(get_sub_field('title_class')); // default, other
+              $class = strtolower(get_sub_field('title_class'));
               $title = get_sub_field('title');
 
               if($title):
             ?>
 
-              <div class="title-module<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>">
+              <div class="title-module<?php if($class) { echo ' ' . $class; } ?>">
                 <div class="inner">
                   <?php echo $title; ?>
                 </div>
@@ -68,13 +67,13 @@ if(get_field('section')):
               // Text content
               elseif(get_row_layout() == 'text'):
 
-              $class = strtolower(get_sub_field('text_class')); // default, other
+              $class = strtolower(get_sub_field('text_class'));
               $text  = get_sub_field('text');
 
               if($text):
             ?>
 
-              <div class="text-module<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>">
+              <div class="text-module<?php if($class) { echo ' ' . $class; } ?>">
                 <div class="inner">
                   <?php echo $text; ?>
                 </div>
@@ -87,15 +86,15 @@ if(get_field('section')):
               // Image content
               elseif(get_row_layout() == 'image'):
 
-              $class = strtolower(get_sub_field('image_class')); // default, other
-              $layout = get_sub_field('image_layout'); // default, circle, rounded, thumbnail
+              $class = strtolower(get_sub_field('image_class'));
+              $layout = get_sub_field('image_layout'); // image, circle, rounded, thumbnail
               $link  = get_sub_field('image_link');
               $image = get_sub_field('image');
 
               if($image):
             ?>
 
-              <div class="image-module<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>">
+              <div class="image-module<?php if($class) { echo ' ' . $class; } ?>">
 
                 <?php
                   if($link) {
@@ -104,7 +103,7 @@ if(get_field('section')):
                     echo '<a href="' . $image['url'] . '" class="fluidbox">';
                   }
                 ?>
-                  <img class="img-responsive<?php if($layout == 'default') { echo ''; } else { echo ' ' . $layout; } ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
+                  <img class="img-responsive<?php if($layout != 'image') { echo ' ' . $layout; } ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
 
                   <?php
                   /* Example picturefill responsive image
@@ -136,13 +135,13 @@ if(get_field('section')):
               // Embed content
               elseif(get_row_layout() == 'embed'):
 
-              $class = strtolower(get_sub_field('embed_class')); // default, other
+              $class = strtolower(get_sub_field('embed_class'));
               $embed = get_sub_field('embed');
 
               if($embed):
             ?>
 
-              <div class="embed-module<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>">
+              <div class="embed-module<?php if($class) { echo ' ' . $class; } ?>">
                 <?php echo $embed; ?>
               </div> <!-- /.embed-module -->
 
@@ -153,13 +152,13 @@ if(get_field('section')):
               // List content
               elseif(get_row_layout() == 'list'):
 
-              $class  = strtolower(get_sub_field('list_class')); // default, other
-              $layout = get_sub_field('list_layout'); // default, list-unstyled, list-inline, list-justified, list-group
+              $class  = strtolower(get_sub_field('list_class'));
+              $layout = get_sub_field('list_layout'); // list-unordered, list-unstyled, list-inline, list-justified, list-group
             ?>
 
-              <div class="list-module">
+              <div class="list-module<?php if($class) { echo ' ' . $class; } ?>">
                 <div class="inner">
-                  <ul class="<?php if($class == 'default') { echo ''; } else { echo $class; } if($layout == 'default') { echo ''; } else { echo ' ' . $layout; } ?>">
+                  <ul class="<?php if($layout) { echo ' ' . $layout; } ?>">
 
                     <?php
                       // Items repeater
@@ -186,13 +185,13 @@ if(get_field('section')):
               // Table content
               elseif(get_row_layout() == 'table'):
 
-              $class  = strtolower(get_sub_field('table_class')); // default, other
-              $layout = get_sub_field('table_layout'); // default, table-striped, table-bordered, table-hover, table-condensed
+              $class  = strtolower(get_sub_field('table_class'));
+              $layout = get_sub_field('table_layout'); // table, table-striped, table-bordered, table-hover, table-condensed
             ?>
 
-              <div class="table-module table-responsive<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>">
+              <div class="table-module table-responsive<?php if($class) { echo ' ' . $class; } ?>">
                 <div class="inner">
-                  <table class="table<?php if($layout == 'default') { echo ''; } else { echo ' ' . $layout; } ?>">
+                  <table class="table<?php if($layout) { echo ' ' . $layout; } ?>">
                     <thead>
                       <tr>
 
@@ -253,7 +252,7 @@ if(get_field('section')):
               // Gallery content
               elseif(get_row_layout() == 'gallery'):
 
-              $class  = strtolower(get_sub_field('gallery_class')); // default, other
+              $class  = strtolower(get_sub_field('gallery_class'));
               $layout = get_sub_field('gallery_layout'); // row, masonry, slideshow
               $width  = get_sub_field('gallery_image_width');
               $images = get_sub_field('gallery_images');
@@ -261,12 +260,12 @@ if(get_field('section')):
               if($images):
             ?>
 
-              <div class="gallery-module<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>">
+              <div class="gallery-module<?php if($class) { echo ' ' . $class; } ?>">
 
                 <?php if($layout == 'row') { ?>
                   <div class="row">
                     <?php foreach ($images as $image) { ?>
-                      <div class="<?php if($width == 'default') { echo 'col-xs-12'; } else { echo $width; } ?>">
+                      <div class="<?php if($width) { echo $width; } ?>">
                         <a href="<?php echo $image['url']; ?>" class="fluidbox">
                           <img class="img-responsive aligncenter" src="<?php echo $image['url']; ?>" alt="<?php $image['alt']; ?>">
 
@@ -296,9 +295,9 @@ if(get_field('section')):
                   </div>
                 <?php } elseif($layout == 'masonry') { ?>
                   <div class="row isotope">
-                    <div class="<?php if($width == 'default') { echo 'col-xs-6'; } else { echo $width; } ?> isotope-sizer"></div>
+                    <div class="<?php if($width) { echo $width; } ?> isotope-sizer"></div>
                     <?php foreach ($images as $image) { ?>
-                      <div class="<?php if($width == 'default') { echo 'col-xs-6'; } else { echo $width; } ?> isotope-item">
+                      <div class="<?php if($width) { echo $width; } ?> isotope-item">
                         <a href="<?php echo $image['url']; ?>" class="isotope__fluidbox">
                           <img class="img-responsive" src="<?php echo $image['url']; ?>" alt="<?php $image['alt']; ?>">
 
@@ -328,7 +327,7 @@ if(get_field('section')):
                   </div>
                 <?php } elseif($layout == 'slideshow') { ?>
                   <div class="row">
-                    <div class="<?php if($width == 'default') { echo 'col-xs-12'; } else { echo $width; } ?>">
+                    <div class="<?php if($width) { echo $width; } ?>">
                       <div class="flexslider">
                         <ul class="slides">
                           <?php foreach ($images as $image) { ?>
@@ -372,67 +371,54 @@ if(get_field('section')):
               // Blockquote content
               elseif(get_row_layout() == 'blockquote'):
 
-              $class = strtolower(get_sub_field('blockquote_class')); // default, other
+              $class = strtolower(get_sub_field('blockquote_class'));
               $quote = get_sub_field('blockquote');
 
               if($quote):
             ?>
-              <div class="blockquote-module<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>">
+
+              <div class="blockquote-module<?php if($class) { echo ' ' . $class; } ?>">
 
                 <?php
-                  // Multiple blockquotes get slideshow treatment
+                  // Multiple blockquote flexslider and <ul>
                   if($quote[1]) {
+                    echo '<div class="flexslider"><ul class="slides">';
+                  }
+
+                  // Blockquote repeater
+                  while(has_sub_field('blockquote')):
+
+                  $text   = get_sub_field('blockquote_text');
+                  $source = get_sub_field('blockquote_source');
+
+                  // Multiple blockquote <li>'s
+                  if($quote[1]) {
+                    echo '<li>';
+                  }
                 ?>
-                  <div class="flexslider">
-                    <ul class="slides">
-
-                      <?php
-                        // Blockquote repeater
-                        while(has_sub_field('blockquote')):
-
-                        $text   = get_sub_field('blockquote_text');
-                        $source = get_sub_field('blockquote_source');
-                      ?>
-
-                      <li>
-                        <blockquote>
-                          <?php
-                            // Display blockquote text
-                            if($text) { echo $text; }
-                            // Display blockquote source
-                            if($source) { echo '<footer><cite title="' . $source . '">' . $source . '</cite></footer>'; }
-                          ?>
-                        </blockquote>
-                      </li>
-
-                      <?php
-                        // Endwhile blockquote repeater
-                        endwhile;
-                      ?>
-                    </ul>
-                  </div>
+                  <blockquote>
+                    <?php
+                      // Display blockquote text
+                      if($text) { echo $text; }
+                      // Display blockquote source
+                      if($source) { echo '<footer><cite title="' . $source . '">' . $source . '</cite></footer>'; }
+                    ?>
+                  </blockquote>
                 <?php
-                  // Single blockquote
-                  } else {
+                  // Multiple blockquote </li>'s
+                  if($quote[1]) {
+                    echo '</li>';
+                  }
 
-                    // Still need to loop through blockquote repeater
-                    while(has_sub_field('blockquote')):
+                  // Endwhile blockquote repeater
+                  endwhile;
 
-                    $text   = get_sub_field('blockquote_text');
-                    $source = get_sub_field('blockquote_source');
-                  ?>
-                    <blockquote>
-                      <?php
-                        // Display blockquote text
-                        if($text) { echo $text; }
-                        // Display blockquote source
-                        if($source) { echo '<footer><cite title="' . $source . '">' . $source . '</cite></footer>'; }
-                      ?>
-                    </blockquote>
-                  <?php
-                    // Endwhile blockquote repeater
-                    endwhile;
-                } ?>
+                  // Multiple blockquote /.flexslider and </ul>
+                  if($quote[1]) {
+                    echo '</div></ul>';
+                  }
+                ?>
+
               </div> <!-- /.blockquote-module -->
 
             <?php
@@ -442,17 +428,19 @@ if(get_field('section')):
               // Horizontal Line content
               elseif(get_row_layout() == 'horizontal_line'):
 
-              $class = strtolower(get_sub_field('line_class')); // default, other
+              $class = strtolower(get_sub_field('line_class'));
               $color = get_sub_field('line_color');
             ?>
 
-              <div class="line-module<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>"><hr<?php if($color) { echo ' style="border-color:' . $color . ';"'; } ?>></div> <!-- /.line-module -->
+              <div class="line-module<?php if($class) { echo ' ' . $class; } ?>">
+                <hr<?php if($color) { echo ' style="border-color:' . $color . ';"'; } ?>>
+              </div> <!-- /.line-module -->
 
             <?php
               // Filter + Loop content in masonry layout
               elseif(get_row_layout() == 'filter_+_loop'):
 
-              $class         = strtolower(get_sub_field('filter_class')); // default, other
+              $class         = strtolower(get_sub_field('filter_class'));
               $post_width    = get_sub_field('post_width');
               $post_per_page = get_sub_field('posts_per_page');
               $post_type     = sanitize_title(get_sub_field('post_type'));
@@ -460,7 +448,7 @@ if(get_field('section')):
               if($post_type):
             ?>
 
-              <div class="filter-module<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>">
+              <div class="filter-module<?php if($class) { echo ' ' . $class; } ?>">
                 <ul class="filters list-inline">
                   <li class="active"><a href="#" data-filter="*">All</a></li>
 
@@ -483,7 +471,7 @@ if(get_field('section')):
 
                 <?php
                 // Use Isotope columnWidth element sizing when using percentage widths.
-                echo '<div class="'. (($post_width == 'default')?'col-xs-6 col-sm-3':$post_width) . ' isotope-sizer"></div>';
+                echo '<div class="'. (($post_width)?$post_width:'') . ' isotope-sizer"></div>';
 
                 // For creating multiple, customized loops.
                 // http://codex.wordpress.org/Class_Reference/WP_Query
@@ -499,7 +487,7 @@ if(get_field('section')):
                 // The loop
                 while($the_query->have_posts()) : $the_query->the_post(); ?>
 
-                  <article <?php post_class('loop-module ' . (($post_width == 'default')?'col-xs-6 col-sm-3':$post_width) . ' isotope-item'); ?>>
+                  <article <?php post_class('loop-module ' . (($post_width)?$post_width:'') . ' isotope-item'); ?>>
                     <header>
                       <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                     </header>
@@ -524,8 +512,8 @@ if(get_field('section')):
               $post_width    = get_sub_field('post_width');
               $post_per_page = get_sub_field('posts_per_page');
               $post_type     = sanitize_title(get_sub_field('post_type'));
-              $post_tax      = sanitize_title(get_sub_field('post_taxonomy')); // Optional, uses conditional below
-              $post_term     = sanitize_title(get_sub_field('post_term')); // Optional, uses conditional below
+              $post_tax      = sanitize_title(get_sub_field('post_taxonomy')); // Optional, uses $args conditional below
+              $post_term     = sanitize_title(get_sub_field('post_term')); // Optional, uses $args conditional below
 
               if($post_type):
             ?>
@@ -534,7 +522,7 @@ if(get_field('section')):
 
                 <?php
                 // Use Isotope columnWidth element sizing when using percentage widths.
-                echo '<div class="' . (($post_width == 'default')?'col-xs-6 col-sm-3':$post_width) .' isotope-sizer"></div>';
+                echo '<div class="' . (($post_width)?$post_width:'') .' isotope-sizer"></div>';
 
                 // For creating multiple, customized loops.
                 // http://codex.wordpress.org/Class_Reference/WP_Query
@@ -565,7 +553,7 @@ if(get_field('section')):
                 // The loop
                 while($the_query->have_posts()) : $the_query->the_post(); ?>
 
-                  <article <?php post_class('loop-module ' . (($post_width == 'default')?'col-xs-6 col-sm-3':$post_width) . ' isotope-item'); ?>>
+                  <article <?php post_class('loop-module ' . (($post_width)?$post_width:'') . ' isotope-item'); ?>>
                     <header>
                       <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                     </header>
@@ -608,9 +596,6 @@ if(get_field('section')):
   </section> <!-- /.section-module -->
 
 <?php
-  // End if module class is not hidden
-  endif;
-
   // End while column section repeater
   endwhile;
 

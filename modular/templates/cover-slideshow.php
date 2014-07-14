@@ -10,13 +10,12 @@ if(get_field('cover_slideshow')):
 
   while(has_sub_field('cover_slideshow')):
 
-  $class  = strtolower(get_sub_field('cover_slideshow_class')); // default, hidden, other
-  $height = get_sub_field('cover_slideshow_height'); // default, 50%, 100%, other
+  $class  = strtolower(get_sub_field('cover_slideshow_class'));
+  $height = get_sub_field('cover_slideshow_height'); // 25%, 50%, 75%, 100%
 
-  if($class != 'hidden'):
 ?>
 
-  <div class="cover-slideshow<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>" style="height:<?php if($height == 'default') { echo '100%;'; } else { echo $height . ';'; } ?>">
+  <div class="cover-slideshow<?php if($class) { echo ' ' . $class; } ?>" style="height:<?php if($height) { echo $height . ';'; } ?>">
 
     <div class="royalSlider rsDefault">
 
@@ -27,8 +26,8 @@ if(get_field('cover_slideshow')):
       $width      = get_sub_field('slide_text_width');
       $offset     = get_sub_field('slide_text_offset');
       $text_color = get_sub_field('slide_text_color');
-      $title      = get_sub_field('slide_title'); // (image) title, none, other
-      $text       = get_sub_field('slide_text'); // (image) caption, none, other
+      $title      = get_sub_field('slide_title');
+      $text       = get_sub_field('slide_text');
       $background = get_sub_field('slide_background');
       $image      = get_sub_field('slide_image');
       $embed      = get_sub_field('slide_embed');
@@ -46,21 +45,17 @@ if(get_field('cover_slideshow')):
         <div class="rsABlock">
           <div class="container">
             <div class="row">
-              <div class="cover-slide__text <?php if($width == 'default') { echo 'col-xs-12'; } else { echo $width; } if($offset == 'default') { echo ''; } else { echo ' ' . $offset; } ?>">
+              <div class="cover-slide__text <?php if($width) { echo $width; } if($offset) { echo ' ' . $offset; } ?>">
                 <div class="inner">
 
                   <?php
                     // Display the title
-                    if($title == 'title') {
-                      echo '<h1 class="cover-title">' . $image['title'] . '</h1>';
-                    } elseif ($title != 'none') {
+                    if($title) {
                       echo '<h1 class="cover-title">' . $title . '</h1>';
                     }
 
                     // Display the text
-                    if($text == 'caption') {
-                      echo '<p>' . $image['caption'] . '</p>';
-                    } elseif ($text != 'none') {
+                    if($text) {
                       echo '<p>' . $text . '</p>';
                     }
                   ?>
@@ -87,9 +82,6 @@ if(get_field('cover_slideshow')):
   </div> <!-- /.cover-module -->
 
 <?php
-  // End if module class is not hidden
-  endif;
-
   // End while page cover repeater
   endwhile;
 

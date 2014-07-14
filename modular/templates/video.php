@@ -10,21 +10,20 @@ if(get_field('video')):
 
   while(has_sub_field('video')):
 
-  $class  = strtolower(get_sub_field('video_class')); // default, hidden, other
-  $height = get_sub_field('video_height'); // default, 50%, 100%, other
+  $class  = strtolower(get_sub_field('video_class'));
+  $height = get_sub_field('video_height'); // 25%, 50%, 75%, 100%
   $width  = get_sub_field('video_text_width');
   $offset = get_sub_field('video_text_offset');
   $color  = get_sub_field('video_text_color');
-  $title  = get_sub_field('video_title'); // title, none, other
-  $text   = get_sub_field('video_text'); // excerpt, none, other
+  $title  = get_sub_field('video_title');
+  $text   = get_sub_field('video_text');
   $image  = get_sub_field('video_image');
   $mp4    = get_sub_field('video_mp4');
   $webm   = get_sub_field('video_webm');
 
-  if($class != 'hidden'):
 ?>
 
-  <div class="cover-module cover-video<?php if($class == 'default') { echo ''; } else { echo ' ' . $class; } ?>" style="height:<?php if($height == 'default') { echo '100%;'; } else { echo $height . ';'; } ?>">
+  <div class="cover-module cover-video<?php if($class) { echo ' ' . $class; } ?>" style="height:<?php if($height) { echo $height . ';'; } ?>">
 
     <div id="screen-1" class="cover-slide" <?php if($mp4) { echo 'data-video-mp4="' . $mp4['url'] . '"'; } if($webm) { echo 'data-video-webm="' . $webm['url'] . '"'; } if($color) { echo ' style="color:' . $color . ';"'; } ?>>
 
@@ -37,21 +36,17 @@ if(get_field('video')):
       <div class="container">
         <div class="row">
 
-          <div class="cover-slide__text <?php if($width == 'default') { echo 'col-xs-12'; } else { echo $width; } if($offset == 'default') { echo ''; } else { echo ' ' . $offset; } ?>">
+          <div class="cover-slide__text <?php if($width) { echo $width; } if($offset) { echo ' ' . $offset; } ?>">
             <div class="inner">
 
               <?php
                 // Display the title
-                if($title == 'title') {
-                  echo '<h1 class="cover-title">' . get_the_title() . '</h1>';
-                } elseif ($title != 'none') {
+                if($title) {
                   echo '<h1 class="cover-title">' . $title . '</h1>';
                 }
 
                 // Display the text
-                if($text == 'excerpt') {
-                  echo '<p>' . get_the_excerpt() . '</p>';
-                } elseif ($text != 'none') {
+                if($text) {
                   echo '<p>' . $text . '</p>';
                 }
               ?>
@@ -70,9 +65,6 @@ if(get_field('video')):
   </div> <!-- /.cover-module -->
 
 <?php
-  // End if module class is not hidden
-  endif;
-
   // End while page cover repeater
   endwhile;
 
