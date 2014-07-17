@@ -55,5 +55,3 @@ add_filter('acf/settings/show_admin', function( $path ){
 include_once('modular/advanced-custom-fields-pro/acf.php');    // ACF5 Pro plugin
 require_once locate_template('/modular/options.php');          // Options pages and styles
 require_once locate_template('/modular/fields.php');           // Locally registered field groups
-
-
