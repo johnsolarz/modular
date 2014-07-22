@@ -360,6 +360,19 @@
                 "disabled":0
               },
               {
+                "key":"field_53cec402b6ab9",
+                "label":"Lightbox",
+                "name":"lightbox",
+                "prefix":"",
+                "type":"true_false",
+                "instructions":"",
+                "required":0,
+                "conditional_logic":0,
+                "column_width":"",
+                "message":"",
+                "default_value":0
+              },
+              {
                 "key":"field_538b8ae58a6ff",
                 "label":"Image",
                 "name":"image",
@@ -919,12 +932,10 @@
         "instructions":"",
         "required":0,
         "conditional_logic":0,
-        "row_min":"",
-        "row_limit":1,
+        "min":"",
+        "max":1,
         "layout":"row",
         "button_label":"Add Cover",
-        "min":0,
-        "max":0,
         "sub_fields":[
           {
             "key":"field_52e166cb0f187",
@@ -1180,12 +1191,10 @@
         "instructions":"",
         "required":0,
         "conditional_logic":0,
-        "row_min":"",
-        "row_limit":1,
+        "min":"",
+        "max":1,
         "layout":"row",
         "button_label":"Add Cover",
-        "min":0,
-        "max":0,
         "sub_fields":[
           {
             "key":"field_52e166cb0f187",
@@ -1889,6 +1898,19 @@
                         "maxlength":"",
                         "readonly":0,
                         "disabled":0
+                      },
+                      {
+                        "key":"field_53ceb9e830a94",
+                        "label":"Lightbox",
+                        "name":"lightbox",
+                        "prefix":"",
+                        "type":"true_false",
+                        "instructions":"",
+                        "required":0,
+                        "conditional_logic":0,
+                        "column_width":"",
+                        "message":"",
+                        "default_value":0
                       },
                       {
                         "key":"field_52d815c0dc064",
@@ -3125,6 +3147,19 @@
                         "disabled":0
                       },
                       {
+                        "key":"field_53cec4e649d9b",
+                        "label":"Lightbox",
+                        "name":"lightbox",
+                        "prefix":"",
+                        "type":"true_false",
+                        "instructions":"",
+                        "required":0,
+                        "conditional_logic":0,
+                        "column_width":"",
+                        "message":"",
+                        "default_value":0
+                      },
+                      {
                         "key":"field_52d815c0dc064",
                         "label":"Image",
                         "name":"image",
@@ -3960,7 +3995,7 @@
         "required":0,
         "conditional_logic":0,
         "min":"",
-        "max":"",
+        "max":1,
         "layout":"row",
         "button_label":"Add Cover",
         "sub_fields":[
@@ -4207,7 +4242,7 @@
         "required":0,
         "conditional_logic":0,
         "min":"",
-        "max":"",
+        "max":1,
         "layout":"row",
         "button_label":"Add Cover",
         "sub_fields":[

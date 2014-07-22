@@ -82,10 +82,11 @@ if(get_field('section_footer', 'option')):
               // Image content
               elseif(get_row_layout() == 'image'):
 
-              $class  = strtolower(get_sub_field('image_class')); // default, other
-              $layout = get_sub_field('image_layout'); // default, circle, rounded, thumbnail
-              $link   = get_sub_field('image_link');
-              $image  = get_sub_field('image');
+              $class    = strtolower(get_sub_field('image_class')); // default, other
+              $layout   = get_sub_field('image_layout'); // default, circle, rounded, thumbnail
+              $link     = get_sub_field('image_link');
+              $lightbox = get_sub_field('lightbox');
+              $image    = get_sub_field('image');
 
               if($image):
             ?>
@@ -95,7 +96,7 @@ if(get_field('section_footer', 'option')):
                 <?php
                   if($link) {
                     echo '<a href="' . $link . '">';
-                  } else {
+                  } elseif($lightbox) {
                     echo '<a href="' . $image['url'] . '" class="fluidbox">';
                   }
                 ?>
@@ -116,7 +117,12 @@ if(get_field('section_footer', 'option')):
                   </span>
                   */ ?>
 
-                </a>
+                <?php
+                  if($link || $lightbox) {
+                    echo '</a>';
+                  }
+                ?>
+
                 <?php
                   if($image['caption']) {
                     echo '<div class="caption">' . $image['caption'] . '</div>';

@@ -52,6 +52,7 @@ while(has_sub_field('content')):
   $class  = get_sub_field('image_class');
   $layout = get_sub_field('image_layout'); // image, circle, rounded, thumbnail
   $link   = get_sub_field('image_link');
+  $lightbox = get_sub_field('lightbox');
   $image  = get_sub_field('image');
 
   if($image):
@@ -62,7 +63,7 @@ while(has_sub_field('content')):
     <?php
       if($link) {
         echo '<a href="' . $link . '">';
-      } else {
+      } elseif($lightbox) {
         echo '<a href="' . $image['url'] . '" class="fluidbox">';
       }
     ?>
@@ -83,7 +84,12 @@ while(has_sub_field('content')):
       </span>
       */ ?>
 
-    </a>
+    <?php
+      if($link || $lightbox) {
+        echo '</a>';
+      }
+    ?>
+
     <?php
       if($image['caption']) {
         echo '<div class="caption">' . $image['caption'] . '</div>';

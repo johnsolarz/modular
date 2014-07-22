@@ -384,7 +384,7 @@ class acf_field_taxonomy extends acf_field {
 		if( $field['return_format'] == 'object' ) {
 			
 			// get posts
-			$value = $this->get_terms( $value );
+			$value = $this->get_terms( $value, $field["taxonomy"] );
 		
 		}
 		
@@ -415,18 +415,14 @@ class acf_field_taxonomy extends acf_field {
 	*/
 	
 	function render_field( $field ) {
-	
-		// format value
-		if( !empty($field['value']) ) {
-			
-			// force value to array
-			$field['value'] = acf_force_type_array( $field['value'] );
-			
-			
-			// convert values to int
-			$field['value'] = array_map('intval', $field['value']);
-			
-		}
+		
+		
+		// force value to array
+		$field['value'] = acf_force_type_array( $field['value'] );
+		
+		
+		// convert values to int
+		$field['value'] = array_map('intval', $field['value']);
 		
 		?>
 <div class="acf-taxonomy-field" data-load_save="<?php echo $field['load_save_terms']; ?>">
