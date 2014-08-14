@@ -196,6 +196,12 @@ var acf = {
 			
 		},
 		
+		get_closest_field : function( $el ){
+			
+			return $el.closest('.acf-field');
+			
+		},
+		
 		get_field_wrap : function( $el ){
 			
 			return $el.closest('.acf-field');
@@ -296,6 +302,10 @@ get_field_data : function( $el, name ){
 		},
 		
 		is_field : function( $el, args ){
+			
+			// defaults
+			args = args || {};
+			
 			
 			// var
 			var r = true;
@@ -928,7 +938,6 @@ get_field_data : function( $el, name ){
 			// frame options
 			var options = {
 				'title'			: args.title,
-				'filterable'	: args.filterable,
 				'multiple'		: args.multiple,
 				'library'		: {},
 				'states'		: [],
@@ -940,6 +949,26 @@ get_field_data : function( $el, name ){
 				
 				options.library = {
 					'type' : args.type
+				};
+				
+			}
+			
+			
+			// limit query
+			if( args.mode == 'edit' ) {
+				
+				options.library = {
+					'post__in' : [args.id]
+				};
+				
+			}
+			
+			
+			// add button
+			if( args.button ) {
+			
+				options.button = {
+					'text' : args.button
 				};
 				
 			}
@@ -967,28 +996,19 @@ get_field_data : function( $el, name ){
 				
 			];
 			
-				
-			// add button
-			if( args.button ) {
 			
-				options.button = {
-					'text' : args.button
-				};
-				
-			}
-
-
-				
 			// create frame
 			var frame = wp.media( options );
 			
 			
 			// log events
-			frame.on('all', function( e ) {
+			/*
+frame.on('all', function( e ) {
 				
-				//console.log( e );
+				console.log( 'frame all: %o', e );
 			
-			}); 
+			});
+*/
 			
 			
 			// edit image view
@@ -1019,14 +1039,14 @@ get_field_data : function( $el, name ){
 				} catch(e) {
 				
 					// one of the objects was 'undefined'... perhaps the frame open is Upload Files
-					console.log( 'error %o', e );
+					// console.log( 'error %o', e );
 					return;
 					
 				}
 				
 				
 				// uploaded to post
-				if( args.library == 'uploadedTo' ) {
+				if( args.library == 'uploadedTo' && $.isNumeric(acf.get('post_id')) ) {
 					
 					// remove 'uploaded' option
 					filters.$el.find('option[value="uploaded"]').remove();
@@ -1150,7 +1170,11 @@ get_field_data : function( $el, name ){
 			frame.on('open',function() {
 				
 				// set to browse
-				this.content.mode('browse');
+				if( this.content.mode() != 'browse' ) {
+				
+					this.content.mode('browse');
+					
+				}
 				
 				
 				// add class
@@ -1158,18 +1182,11 @@ get_field_data : function( $el, name ){
 					
 				
 				// set selection
-				var selection	=	this.state().get('selection'),
-					attachment	=	wp.media.attachment( args.id );
+				var state 		= this.state(),
+					selection	= state.get('selection'),
+					attachment	= wp.media.attachment( args.id );
 				
 				
-				// to fetch or not to fetch
-				if( $.isEmptyObject(attachment.changed) ) {
-				
-					attachment.fetch();
-					
-				}
-				
-
 				selection.add( attachment );
 						
 			}, frame);
@@ -1351,42 +1368,22 @@ get_field_data : function( $el, name ){
 			// override save
 			_prototype.save = function( event ) {
 			
-				var data = {},
-					names = {};
-				
-				if ( event )
+				if( event ) {
+					
 					event.preventDefault();
 					
-					
-				_.each( this.$el.serializeArray(), function( pair ) {
+				}
 				
-					// initiate name
-					if( pair.name.slice(-2) === '[]' )
-					{
-						// remove []
-						pair.name = pair.name.replace('[]', '');
-						
-						
-						// initiate counter
-						if( typeof names[ pair.name ] === 'undefined'){
-							
-							names[ pair.name ] = -1;
-							//console.log( names[ pair.name ] );
-							
-						}
-						
-						
-						names[ pair.name ]++
-						
-						pair.name += '[' + names[ pair.name ] +']';
-						
-						
-					}
- 
-					data[ pair.name ] = pair.value;
-				});
- 
+				
+				// serialize form
+				var data = acf.serialize_form(this.$el);
+				
+				
+				// ignore render
 				this.ignore_render = true;
+				
+				
+				// save
 				this.model.saveCompat( data );
 				
 			};
@@ -1396,23 +1393,16 @@ get_field_data : function( $el, name ){
 			setTimeout(function(){
 			
 				// Hack for CPT without a content editor
-				try
-				{
+				try {
+				
 					// post_id may be string (user_1) and therefore, the uploaded image cannot be attached to the post
-					if( $.isNumeric(acf.o.post_id) )
-					{
+					if( $.isNumeric(acf.o.post_id) ) {
+					
 						wp.media.view.settings.post.id = acf.o.post_id;
+						
 					}
 					
-				} 
-				catch(e)
-				{
-					// one of the objects was 'undefined'...
-				}
-				
-				
-				// setup fields
-				//$(document).trigger('acf/setup_fields', [ $(document) ]);
+				} catch(e) {}
 				
 			}, 10);
 			
@@ -1448,32 +1438,39 @@ get_field_data : function( $el, name ){
 		
 		init : function(){
 			
+			// debug
+			//console.log( 'conditional_logic.init(%o)', this );
+			
+			
 			// reference
-			var _this = this;
+			var self = this;
 			
 			
 			// events
 			$(document).on('change', '.acf-field input, .acf-field textarea, .acf-field select', function(){
 				
-				_this.change( $(this) );
+				self.change( $(this) );
 				
 			});
 			
 			
 			// actions
+			acf.add_action('ready', function( $el ){
+				
+				self.render( $el );
+				
+			}, 20);
+			
+						
 			acf.add_action('append', function( $el ){
 				
-				_this.render( $el );
+				self.render( $el );
 				
-			});
+			}, 20);
 			
 			
-			// debug
-			//console.log( 'conditional_logic.init(%o)', this );
-			
-			
-			// render
-			_this.render();
+			// return
+			return this;
 			
 		},
 		
@@ -1853,13 +1850,7 @@ get_field_data : function( $el, name ){
 			
 		}
 		
-	}; 
-	
-	acf.add_action('ready', function(){
-		
-		acf.conditional_logic.init();
-		
-	}, 100);
+	}.init();
 	
 	
 	
@@ -1901,6 +1892,26 @@ get_field_data : function( $el, name ){
 		
 		// action for 3rd party customization
 		acf.do_action('load', $('body'));
+		
+	});
+	
+	
+	/*
+	*  preventDefault helper
+	*
+	*  This function will prevent default of any link with an href of #
+	*
+	*  @type	function
+	*  @date	24/07/2014
+	*  @since	5.0.0
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	$(document).on('click', '.acf-field a[href="#"]', function( e ){
+		
+		e.preventDefault();
 		
 	});
 	

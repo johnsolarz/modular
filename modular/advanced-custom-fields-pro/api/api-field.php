@@ -16,16 +16,26 @@
 function acf_is_field_key( $field_key = '' ) {
 	
 	// validate type
-	if( ! is_string($field_key) )
-	{
+	if( ! is_string($field_key) ) {
+		
 		return false;
+		
 	}
 	
 	
 	// search for 'field_'
-	if( substr($field_key, 0, 6) === 'field_' )
-	{
+	if( substr($field_key, 0, 6) === 'field_' ) {
+	
 		return true;
+		
+	}
+	
+	
+	// allow local field key to not start with '_field'
+	if( acf_is_local_field($field_key) ) {
+		
+		return true;
+		
 	}
 	
 	
@@ -300,7 +310,7 @@ function acf_get_fields( $parent = false ) {
 	if( acf_have_local_fields( $parent['key'] ) ) {
 		
 		$fields = acf_get_local_fields( $parent['key'] );
-	
+		
 	} else {
 		
 		$fields = acf_get_fields_by_id( $parent['ID'] );
@@ -703,9 +713,10 @@ function _acf_get_field_by_name( $name = '' ) {
 function acf_update_field( $field = false, $specific = false ) {
 	
 	// $field must be an array
-	if( !is_array($field) )
-	{
+	if( !is_array($field) ) {
+	
 		return false;
+		
 	}
 	
 	
@@ -724,20 +735,22 @@ function acf_update_field( $field = false, $specific = false ) {
 		$groups = acf_extract_var( $field, 'conditional_logic' );
 		
 		
-		// reset conditional logic
-		$field['conditional_logic'] = array();
+		// clean array
+		$groups = array_filter($groups);
+		$groups = array_values($groups);
 		
 		
-		// remove empty rules
-		foreach( $groups as $group ) {
+		// clean rules
+		foreach( array_keys($groups) as $i ) {
 			
-			if( !empty($group) ) {
-				
-				$field['conditional_logic'][] = $group;
-				
-			}
+			$groups[ $i ] = array_filter($groups[ $i ]);
+			$groups[ $i ] = array_values($groups[ $i ]);
 			
 		}
+		
+		
+		// reset conditional logic
+		$field['conditional_logic'] = $groups;
 		
 	}
 	
@@ -765,8 +778,6 @@ function acf_update_field( $field = false, $specific = false ) {
 		'id',
 		'class',
 		'parent',
-		//'ancestors',
-		//'field_group',
 		'_name',
 		'_input',
 		'_valid',
@@ -816,7 +827,7 @@ function acf_update_field( $field = false, $specific = false ) {
     
     
     // allow fields to contain the same name
-	add_filter( 'wp_unique_post_slug', 'acf_update_field_wp_unique_post_slug', 5, 6 ); 
+	add_filter( 'wp_unique_post_slug', 'acf_update_field_wp_unique_post_slug', 100, 6 ); 
 	
 	
     // update the field and update the ID

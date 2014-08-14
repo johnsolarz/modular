@@ -107,6 +107,25 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 5.0.4 =
+* WYSIWYG field: Major improvement adding visual and text tabs
+* Image field: Fixed uploadedTo bug on non post edit page
+* Tab field: Fixed various JS bugs
+* Options page: Fixed bug causing field groups with position setting of 'High' to not appear
+* Options page: Added functionality to toggle and save state of postbox
+* Core: Fixed nested bug in get_sub_field_object()
+* Language: Updated Brazil translation - thanks to André Felipe
+
+= 5.0.3 =
+* Gallery field: Added new edit button within sidebar to launch edit/crop popup
+* Gallery field: Changed placement of remove button when sidebar is open
+* Gallery field: Added functionality to resize height
+* Options page: Fixed default value not working
+* Core: Fixed local json issues with WPML
+* Core: Allowed local fields and groups to use custom keys (non 'field_')
+* Core: Minor bug fixes
+* Language: Updated French translation - thanks to Maxime Bernard-Jacquet
+
 = 5.0.2 =
 * Field group: Fixed bug deleteing fields after they are moved to another group
 * Field group: Fixed PHP error preventing redirect after group is duplicated

@@ -386,7 +386,7 @@ ul.acf-checkbox-list li label {
 }
 
 .acf-wysiwyg-wrap iframe{ 
-	min-height: 250px;
+	min-height: 200px;
 }
 
 .acf-wysiwyg-wrap .wp-editor-container{ 
@@ -502,6 +502,12 @@ ul.acf-checkbox-list li label {
 .acf-table tr.acf-tab-wrap td .acf-tab-group {
 	margin-bottom: -1px;
 	padding-left: 24%;
+}
+
+/* media popup & gallery field fix */
+.acf-table .form-table tr.acf-tab-wrap td .acf-tab-group {
+	margin-bottom: 10px;
+	padding-left: 0;
 }
 
 
