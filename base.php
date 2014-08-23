@@ -14,11 +14,11 @@
 
   <div class="wrap<?php if(roots_display_sidebar()) { echo ' container'; } ?>" role="document">
     <div class="content<?php if(roots_display_sidebar()) { echo ' row'; } ?>">
-      <main id="main" class="main<?php if(roots_display_sidebar()) { echo ' ' . roots_main_class(); } ?>" role="main">
+      <main id="main" class="main" role="main">
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
       <?php if (roots_display_sidebar()) : ?>
-        <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
+        <aside class="sidebar" role="complementary">
           <?php include roots_sidebar_path(); ?>
         </aside><!-- /.sidebar -->
       <?php endif; ?>
