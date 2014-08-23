@@ -1,4 +1,5 @@
 # [Roots Starter Theme](http://roots.io/)
+[![devDependency Status](https://david-dm.org/roots/roots/dev-status.svg)](https://david-dm.org/roots/roots#info=devDependencies)
 
 Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) & [Bootstrap](http://getbootstrap.com/) that will help you make better themes.
 
@@ -33,7 +34,6 @@ Install the [Soil](https://github.com/roots/soil) plugin to enable additional fe
 * Root relative URLs
 * Nice search (`/search/query/`)
 * Cleaner output of `wp_head` and enqueued assets markup
-* Image captions use `<figure>` and `<figcaption>`
 
 ## Installation
 
