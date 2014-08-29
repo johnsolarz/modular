@@ -2,8 +2,8 @@
 /**
  * Section module
  *
- * Include in your theme template: <?php get_template_part('modular/templates/section'); ?>
- * Loops through Sections > Columns > Content: Title, Text, Image, Embed, List, Table, Gallery, Blockquote, Horizontal Line, Filter + Loop, Loop
+ * Include in your theme: <?php get_template_part('modular/templates/section'); ?>
+ * Loops through Sections > Columns > Content: Embed, Filter, Gallery, HTML, Image, Jumbotron, Line, List, Loop, Quote, Table, Title, Text
  */
 // Section repeater
 if(get_field('section')):
@@ -17,7 +17,7 @@ if(get_field('section')):
 
 ?>
 
-  <section id="<?php if($id) { echo $id; } ?>" class="section-module<?php if($class) { echo ' ' . $class; } ?>">
+  <section <?php if($id) { echo 'id="' . $id . '"'; } ?> class="section-module<?php if($class) { echo ' ' . $class; } ?>">
 
     <div class="<?php echo $wrapper; ?>">
 
@@ -45,101 +45,8 @@ if(get_field('section')):
               // Flexible content
               while(has_sub_field('content')):
 
-              // Title content
-              if(get_row_layout() == 'title'):
-
-              $class = strtolower(get_sub_field('title_class'));
-              $title = get_sub_field('title');
-
-              if($title):
-            ?>
-
-              <div class="title-module<?php if($class) { echo ' ' . $class; } ?>">
-                <div class="inner">
-                  <?php echo $title; ?>
-                </div>
-              </div> <!-- /.title-module -->
-
-            <?php
-              // End if title module
-              endif;
-
-              // Text content
-              elseif(get_row_layout() == 'text'):
-
-              $class = strtolower(get_sub_field('text_class'));
-              $text  = get_sub_field('text');
-
-              if($text):
-            ?>
-
-              <div class="text-module<?php if($class) { echo ' ' . $class; } ?>">
-                <div class="inner">
-                  <?php echo $text; ?>
-                </div>
-              </div> <!-- /.text-module -->
-
-            <?php
-              // End if text module
-              endif;
-
-              // Image content
-              elseif(get_row_layout() == 'image'):
-
-              $class    = strtolower(get_sub_field('image_class'));
-              $layout   = get_sub_field('image_layout'); // image, circle, rounded, thumbnail
-              $link     = get_sub_field('image_link');
-              $lightbox = get_sub_field('lightbox');
-              $image    = get_sub_field('image');
-
-              if($image):
-            ?>
-
-              <div class="image-module<?php if($class) { echo ' ' . $class; } ?>">
-
-                <?php
-                  if($link) {
-                    echo '<a href="' . $link . '">';
-                  } elseif($lightbox) {
-                    echo '<a href="' . $image['url'] . '" class="fluidbox">';
-                  }
-                ?>
-                  <img class="img-responsive<?php if($layout != 'image') { echo ' ' . $layout; } ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
-
-                  <?php
-                  /* Example picturefill responsive image
-                  <span data-picture data-alt="<?php echo $image['alt']; ?>">
-                    <span data-src="<?php echo $image['sizes']['screen-xs-img']; ?>"></span>
-                    <span data-src="<?php echo $image['sizes']['screen-sm-img']; ?>" data-media="(min-width: 768px)"></span>
-                    <span data-src="<?php echo $image['sizes']['screen-md-img']; ?>" data-media="(min-width: 992px)"></span>
-                    <span data-src="<?php echo $image['sizes']['screen-lg-img']; ?>" data-media="(min-width: 1200px)"></span>
-
-                    <!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. -->
-                    <noscript>
-                      <img src="<?php echo $image['sizes']['screen-xs-img']; ?>" alt="<?php echo $image['alt']; ?>">
-                    </noscript>
-                  </span>
-                  */ ?>
-
-                <?php
-                  if($link || $lightbox) {
-                    echo '</a>';
-                  }
-                ?>
-
-                <?php
-                  if($image['caption']) {
-                    echo '<div class="caption">' . $image['caption'] . '</div>';
-                  }
-                ?>
-              </div> <!-- /.image-module -->
-
-            <?php
-              // End if image module
-              endif;
-
               // Embed content
-              elseif(get_row_layout() == 'embed'):
+              if(get_row_layout() == 'embed'):
 
               $class = strtolower(get_sub_field('embed_class'));
               $embed = get_sub_field('embed');
@@ -155,106 +62,75 @@ if(get_field('section')):
               // End if embed module
               endif;
 
-              // List content
-              elseif(get_row_layout() == 'list'):
+              // Filter content in masonry layout
+              elseif(get_row_layout() == 'filter'):
 
-              $class  = strtolower(get_sub_field('list_class'));
-              $layout = get_sub_field('list_layout'); // list-unordered, list-unstyled, list-inline, list-justified, list-group
+              $class         = strtolower(get_sub_field('filter_class'));
+              $post_width    = get_sub_field('post_width');
+              $post_per_page = get_sub_field('posts_per_page');
+              $post_type     = sanitize_title(get_sub_field('post_type'));
+
+              if($post_type):
             ?>
 
-              <div class="list-module<?php if($class) { echo ' ' . $class; } ?>">
-                <div class="inner">
-                  <ul class="<?php if($layout) { echo ' ' . $layout; } ?>">
+              <div class="filter-module<?php if($class) { echo ' ' . $class; } ?>">
+                <ul class="filters list-inline">
+                  <li class="active"><a href="#" data-filter="*">All</a></li>
 
                     <?php
-                      // Items repeater
-                      while(has_sub_field('list_item')):
+                      // Filter repeater
+                      while(has_sub_field('filter')):
 
-                      $item = get_sub_field('item');
+                      $title  = get_sub_field('title');
+                      $target = sanitize_title(get_sub_field('target'));
 
-                      if($item):
+                        echo '<li><a href="#" data-filter=".' . $target . '">' . $title . '</a></li>';
 
-                        echo '<li' . (($layout == 'list-group')?' class="list-group-item"':'') . '>' . $item .'</li>';
-
-                      // End if item
-                      endif;
-
-                      // End item repeater
+                      // End filter repeater
                       endwhile;
                     ?>
 
-                  </ul>
-                </div>
-              </div> <!-- /.list-module -->
+                </ul>
+              </div>
+              <div class="filter-content row isotope">
+
+                <?php
+                // Use Isotope columnWidth element sizing when using percentage widths.
+                echo '<div class="'. (($post_width)?$post_width:'') . ' isotope-sizer"></div>';
+
+                // For creating multiple, customized loops.
+                // http://codex.wordpress.org/Class_Reference/WP_Query
+                // Parameters
+                $args = array(
+                  'post_type'      => $post_type,
+                  'posts_per_page' => $post_per_page
+                );
+
+                // Results
+                $the_query = new WP_Query( $args );
+
+                // The loop
+                while($the_query->have_posts()) : $the_query->the_post(); ?>
+
+                  <article <?php post_class('loop-module ' . (($post_width)?$post_width:'') . ' isotope-item'); ?>>
+                    <header>
+                      <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                    </header>
+                    <div class="entry-summary">
+                      <?php the_excerpt(); ?>
+                    </div>
+                  </article>
+
+                <?php endwhile; ?>
+
+                <?php wp_reset_postdata(); // reset the query ?>
+
+              </div>
 
             <?php
-              // Table content
-              elseif(get_row_layout() == 'table'):
+              // End if filter module
+              endif;
 
-              $class  = strtolower(get_sub_field('table_class'));
-              $layout = get_sub_field('table_layout'); // table, table-striped, table-bordered, table-hover, table-condensed
-            ?>
-
-              <div class="table-module table-responsive<?php if($class) { echo ' ' . $class; } ?>">
-                <div class="inner">
-                  <table class="table<?php if($layout) { echo ' ' . $layout; } ?>">
-                    <thead>
-                      <tr>
-
-                        <?php
-                          // Heading repeater
-                          while(has_sub_field('table_heading')):
-
-                          $heading = get_sub_field('heading');
-
-                          if($heading):
-
-                            echo '<th>' . $heading . '</th>';
-
-                          // End if heading
-                          endif;
-
-                          // End heading repeater
-                          endwhile;
-                        ?>
-
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                      <?php
-                        // Row repeater
-                        while(has_sub_field('table_row')):
-
-                          echo '<tr>';
-
-                            // Cells repeater
-                            while(has_sub_field('row_cell')):
-
-                            $cell = get_sub_field('cell');
-
-                            if($cell):
-
-                              echo '<td>' . $cell . '</td>';
-
-                            // End if cell
-                            endif;
-
-                            // Cells repeater
-                            endwhile;
-
-                          echo '</tr>';
-
-                        // End row repeater
-                        endwhile;
-                      ?>
-
-                    </tbody>
-                  </table>
-                </div>
-              </div> <!-- /.table-module -->
-
-            <?php
               // Gallery content
               elseif(get_row_layout() == 'gallery'):
 
@@ -374,144 +250,161 @@ if(get_field('section')):
               // End if gallery module
               endif;
 
-              // Blockquote content
-              elseif(get_row_layout() == 'blockquote'):
+              // HTML content
+              elseif(get_row_layout() == 'html'):
 
-              $class = strtolower(get_sub_field('blockquote_class'));
-              $quote = get_sub_field('blockquote');
+              $class = strtolower(get_sub_field('html_class'));
+              $html  = get_sub_field('html');
 
-              if($quote):
+              if($class || $html):
             ?>
 
-              <div class="blockquote-module<?php if($class) { echo ' ' . $class; } ?>">
-
-                <?php
-                  // Multiple blockquote flexslider and <ul>
-                  if($quote[1]) {
-                    echo '<div class="flexslider"><ul class="slides">';
-                  }
-
-                  // Blockquote repeater
-                  while(has_sub_field('blockquote')):
-
-                  $text   = get_sub_field('blockquote_text');
-                  $source = get_sub_field('blockquote_source');
-
-                  // Multiple blockquote <li>'s
-                  if($quote[1]) {
-                    echo '<li>';
-                  }
-                ?>
-                  <blockquote>
-                    <?php
-                      // Display blockquote text
-                      if($text) { echo $text; }
-                      // Display blockquote source
-                      if($source) { echo '<footer><cite title="' . $source . '">' . $source . '</cite></footer>'; }
-                    ?>
-                  </blockquote>
-                <?php
-                  // Multiple blockquote </li>'s
-                  if($quote[1]) {
-                    echo '</li>';
-                  }
-
-                  // Endwhile blockquote repeater
-                  endwhile;
-
-                  // Multiple blockquote /.flexslider and </ul>
-                  if($quote[1]) {
-                    echo '</div></ul>';
-                  }
-                ?>
-
-              </div> <!-- /.blockquote-module -->
+              <div class="html-module<?php if($class) { echo ' ' . $class; } ?>">
+                <?php if($html) { echo $html; } ?>
+              </div> <!-- /.html-module -->
 
             <?php
-              // End if blockquote module
+              // End if html module
               endif;
 
-              // Horizontal Line content
-              elseif(get_row_layout() == 'horizontal_line'):
+              // Image content
+              elseif(get_row_layout() == 'image'):
+
+              $class    = strtolower(get_sub_field('image_class'));
+              $layout   = get_sub_field('image_layout'); // image, circle, rounded, thumbnail
+              $link     = get_sub_field('image_link');
+              $lightbox = get_sub_field('lightbox');
+              $image    = get_sub_field('image');
+
+              if($image):
+            ?>
+
+              <div class="image-module<?php if($class) { echo ' ' . $class; } ?>">
+
+                <?php
+                  if($link) {
+                    echo '<a href="' . $link . '">';
+                  } elseif($lightbox) {
+                    echo '<a href="' . $image['url'] . '" class="fluidbox">';
+                  }
+                ?>
+                  <img class="img-responsive<?php if($layout != 'image') { echo ' ' . $layout; } ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
+
+                  <?php
+                  /* Example picturefill responsive image
+                  <span data-picture data-alt="<?php echo $image['alt']; ?>">
+                    <span data-src="<?php echo $image['sizes']['screen-xs-img']; ?>"></span>
+                    <span data-src="<?php echo $image['sizes']['screen-sm-img']; ?>" data-media="(min-width: 768px)"></span>
+                    <span data-src="<?php echo $image['sizes']['screen-md-img']; ?>" data-media="(min-width: 992px)"></span>
+                    <span data-src="<?php echo $image['sizes']['screen-lg-img']; ?>" data-media="(min-width: 1200px)"></span>
+
+                    <!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. -->
+                    <noscript>
+                      <img src="<?php echo $image['sizes']['screen-xs-img']; ?>" alt="<?php echo $image['alt']; ?>">
+                    </noscript>
+                  </span>
+                  */ ?>
+
+                <?php
+                  if($link || $lightbox) {
+                    echo '</a>';
+                  }
+                ?>
+
+                <?php
+                  if($image['caption']) {
+                    echo '<div class="caption">' . $image['caption'] . '</div>';
+                  }
+                ?>
+              </div> <!-- /.image-module -->
+
+            <?php
+              // End if image module
+              endif;
+
+              // Jumbotron content
+              elseif(get_row_layout() == 'jumbotron'):
+
+              $class      = strtolower(get_sub_field('jumbotron_class'));
+              $layout     = get_sub_field('jumbotron_layout'); // fixed, scroll, parallax
+              $align      = get_sub_field('jumbotron_text_align');
+              $text_color = get_sub_field('jumbotron_text_color');
+              $title      = get_sub_field('jumbotron_title');
+              $text       = get_sub_field('jumbotron_text');
+              $background = get_sub_field('jumbotron_background');
+              $image      = get_sub_field('jumbotron_image');
+            ?>
+
+              <div class="jumbotron-module<?php if($class) { echo ' ' . $class; } ?>">
+                <div class="jumbotron fullscreen background-image<?php if($layout) { echo ' ' . $layout; } ?>" <?php if($text_color || $background || $image) { echo 'style="' . (($text_color)?'color:' . $text_color .';':'') . (($background)?'background-color:' . $background . ';':'') . (($image)?'background-image:url(' . $image['url'] . ');':'') . '"'; } if($image) { echo 'data-img-width="' . $image['width'] . '" data-img-height="' . $image['height'] . '" data-diff="100"'; } ?>>
+
+                  <div class="jumbotron__text <?php if($align) { echo $align; } ?>">
+                    <div class="inner">
+
+                      <?php
+                        // Display the title
+                        if($title) {
+                          echo '<h1 class="jumbotron-title">' . $title . '</h1>';
+                        }
+
+                        // Display the text
+                        if($text) {
+                          echo '<p>' . $text . '</p>';
+                        }
+                      ?>
+
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- /.jumbotron-module -->
+
+            <?php
+              // Line content
+              elseif(get_row_layout() == 'line'):
 
               $class = strtolower(get_sub_field('line_class'));
+              $width = get_sub_field('line_width');
               $color = get_sub_field('line_color');
             ?>
 
               <div class="line-module<?php if($class) { echo ' ' . $class; } ?>">
-                <hr<?php if($color) { echo ' style="border-color:' . $color . ';"'; } ?>>
+                <hr <?php if($width || $color) { echo 'style="' . (($width)?'border-width:' . $width . 'px;':'') . (($color)?'border-color:' . $color . ';':'') . '"'; } ?>>
               </div> <!-- /.line-module -->
 
             <?php
-              // Filter + Loop content in masonry layout
-              elseif(get_row_layout() == 'filter_+_loop'):
+              // List content
+              elseif(get_row_layout() == 'list'):
 
-              $class         = strtolower(get_sub_field('filter_class'));
-              $post_width    = get_sub_field('post_width');
-              $post_per_page = get_sub_field('posts_per_page');
-              $post_type     = sanitize_title(get_sub_field('post_type'));
-
-              if($post_type):
+              $class  = strtolower(get_sub_field('list_class'));
+              $layout = get_sub_field('list_layout'); // list-unordered, list-unstyled, list-inline, list-justified, list-group
             ?>
 
-              <div class="filter-module<?php if($class) { echo ' ' . $class; } ?>">
-                <ul class="filters list-inline">
-                  <li class="active"><a href="#" data-filter="*">All</a></li>
+              <div class="list-module<?php if($class) { echo ' ' . $class; } ?>">
+                <div class="inner">
+                  <ul class="<?php if($layout) { echo ' ' . $layout; } ?>">
 
                     <?php
-                      // Filter repeater
-                      while(has_sub_field('filter')):
+                      // Items repeater
+                      while(has_sub_field('list_item')):
 
-                      $title  = get_sub_field('title');
-                      $target = sanitize_title(get_sub_field('target'));
+                      $item = get_sub_field('item');
 
-                        echo '<li><a href="#" data-filter=".' . $target . '">' . $title . '</a></li>';
+                      if($item):
 
-                      // End filter repeater
+                        echo '<li' . (($layout == 'list-group')?' class="list-group-item"':'') . '>' . $item .'</li>';
+
+                      // End if item
+                      endif;
+
+                      // End item repeater
                       endwhile;
                     ?>
 
-                </ul>
-              </div>
-              <div class="filter-content row isotope">
-
-                <?php
-                // Use Isotope columnWidth element sizing when using percentage widths.
-                echo '<div class="'. (($post_width)?$post_width:'') . ' isotope-sizer"></div>';
-
-                // For creating multiple, customized loops.
-                // http://codex.wordpress.org/Class_Reference/WP_Query
-                // Parameters
-                $args = array(
-                  'post_type'      => $post_type,
-                  'posts_per_page' => $post_per_page
-                );
-
-                // Results
-                $the_query = new WP_Query( $args );
-
-                // The loop
-                while($the_query->have_posts()) : $the_query->the_post(); ?>
-
-                  <article <?php post_class('loop-module ' . (($post_width)?$post_width:'') . ' isotope-item'); ?>>
-                    <header>
-                      <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                    </header>
-                    <div class="entry-summary">
-                      <?php the_excerpt(); ?>
-                    </div>
-                  </article>
-
-                <?php endwhile; ?>
-
-                <?php wp_reset_postdata(); // reset the query ?>
-
-              </div>
+                  </ul>
+                </div>
+              </div> <!-- /.list-module -->
 
             <?php
-              // End if filter module
-              endif;
-
               // Loop content
               elseif(get_row_layout() == 'loop'):
 
@@ -576,6 +469,168 @@ if(get_field('section')):
 
             <?php
               // End if loop module
+              endif;
+
+              // Quote content
+              elseif(get_row_layout() == 'quote'):
+
+              $class = strtolower(get_sub_field('quote_class'));
+              $quote = get_sub_field('quote');
+
+              if($quote):
+            ?>
+
+              <div class="quote-module<?php if($class) { echo ' ' . $class; } ?>">
+
+                <?php
+                  // Multiple quote flexslider and <ul>
+                  if($quote[1]) {
+                    echo '<div class="flexslider"><ul class="slides">';
+                  }
+
+                  // Quote repeater
+                  while(has_sub_field('quote')):
+
+                  $text   = get_sub_field('quote_text');
+                  $source = get_sub_field('quote_source');
+
+                  // Multiple quote <li>'s
+                  if($quote[1]) {
+                    echo '<li>';
+                  }
+                ?>
+                  <blockquote>
+                    <?php
+                      // Display quote text
+                      if($text) { echo $text; }
+                      // Display quote source
+                      if($source) { echo '<footer><cite title="' . $source . '">' . $source . '</cite></footer>'; }
+                    ?>
+                  </blockquote>
+                <?php
+                  // Multiple quote </li>'s
+                  if($quote[1]) {
+                    echo '</li>';
+                  }
+
+                  // Endwhile quote repeater
+                  endwhile;
+
+                  // Multiple quote /.flexslider and </ul>
+                  if($quote[1]) {
+                    echo '</div></ul>';
+                  }
+                ?>
+
+              </div> <!-- /.quote-module -->
+
+            <?php
+              // End if quote module
+              endif;
+
+              // Table content
+              elseif(get_row_layout() == 'table'):
+
+              $class  = strtolower(get_sub_field('table_class'));
+              $layout = get_sub_field('table_layout'); // table, table-striped, table-bordered, table-hover, table-condensed
+            ?>
+
+              <div class="table-module table-responsive<?php if($class) { echo ' ' . $class; } ?>">
+                <div class="inner">
+                  <table class="table<?php if($layout) { echo ' ' . $layout; } ?>">
+                    <thead>
+                      <tr>
+
+                        <?php
+                          // Heading repeater
+                          while(has_sub_field('table_heading')):
+
+                          $heading = get_sub_field('heading');
+
+                          if($heading):
+
+                            echo '<th>' . $heading . '</th>';
+
+                          // End if heading
+                          endif;
+
+                          // End heading repeater
+                          endwhile;
+                        ?>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <?php
+                        // Row repeater
+                        while(has_sub_field('table_row')):
+
+                          echo '<tr>';
+
+                            // Cells repeater
+                            while(has_sub_field('row_cell')):
+
+                            $cell = get_sub_field('cell');
+
+                            if($cell):
+
+                              echo '<td>' . $cell . '</td>';
+
+                            // End if cell
+                            endif;
+
+                            // Cells repeater
+                            endwhile;
+
+                          echo '</tr>';
+
+                        // End row repeater
+                        endwhile;
+                      ?>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div> <!-- /.table-module -->
+
+            <?php
+              // Title content
+              elseif(get_row_layout() == 'title'):
+
+              $class = strtolower(get_sub_field('title_class'));
+              $title = get_sub_field('title');
+
+              if($title):
+            ?>
+
+              <div class="title-module<?php if($class) { echo ' ' . $class; } ?>">
+                <div class="inner">
+                  <?php echo $title; ?>
+                </div>
+              </div> <!-- /.title-module -->
+
+            <?php
+              // End if title module
+              endif;
+
+              // Text content
+              elseif(get_row_layout() == 'text'):
+
+              $class = strtolower(get_sub_field('text_class'));
+              $text  = get_sub_field('text');
+
+              if($text):
+            ?>
+
+              <div class="text-module<?php if($class) { echo ' ' . $class; } ?>">
+                <div class="inner">
+                  <?php echo $text; ?>
+                </div>
+              </div> <!-- /.text-module -->
+
+            <?php
+              // End if text module
               endif;
 
               // End if flexible content

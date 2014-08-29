@@ -1701,7 +1701,7 @@ frame.on('all', function( e ) {
 		show_field : function( $field ){
 			
 			// vars
-			var key = acf.get_field_key( $field );
+			//var key = acf.get_field_key( $field );
 							
 			
 			// add class
@@ -1715,7 +1715,7 @@ frame.on('all', function( e ) {
 			
 			// action for 3rd party customization
 			acf.do_action('conditional_logic_show_field', $field );
-			acf.do_action('show_field', $field );
+			acf.do_action('show_field', $field, 'conditional_logic' );
 			
 		},
 		
@@ -1726,7 +1726,7 @@ frame.on('all', function( e ) {
 			
 			
 			// vars
-			var key = acf.get_field_key( $field );
+			//var key = acf.get_field_key( $field );
 			
 			
 			// add class
@@ -1739,7 +1739,7 @@ frame.on('all', function( e ) {
 			
 			// action for 3rd party customization
 			acf.do_action('conditional_logic_hide_field', $field );
-			acf.do_action('hide_field', $field );
+			acf.do_action('hide_field', $field, 'conditional_logic' );
 			
 		},
 		
@@ -1960,10 +1960,47 @@ frame.on('all', function( e ) {
 	$(document).on('change', '.acf-field input, .acf-field textarea, .acf-field select', function(){
 		
 		// preview hack
-		if( $('#acf-form-data input[name="_acfchanged"]').exists() )
-		{
+		if( $('#acf-form-data input[name="_acfchanged"]').exists() ) {
+		
 			$('#acf-form-data input[name="_acfchanged"]').val(1);
+			
 		}
+		
+		
+		// update setting
+		acf.update('changed', true);
+		
+	});
+	
+	
+	/*
+	*  unload
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	25/08/2014
+	*  @since	5.0.0
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	var onBeforeUnload = function(){
+		
+		if( acf.get('changed') ) {
+			
+			return acf._e('core', 'save_alert');
+			
+		}
+		
+	};
+	
+	$(window).on('beforeunload', onBeforeUnload);
+	
+	acf.add_action('submit', function(){
+		
+		$(window).off('beforeunload', onBeforeUnload);
 		
 	});
 	
@@ -2137,6 +2174,19 @@ frame.on('all', function( e ) {
 		});
 		
 	});
+	
+	acf.add_action('hide_field', function( $el, context ){
+				
+		acf.do_action('hide_field/type=' + acf.get_field_type($el), $el, context);
+		
+	});
+	
+	acf.add_action('show_field', function( $el, context ){
+				
+		acf.do_action('show_field/type=' + acf.get_field_type($el), $el, context);
+		
+	});
+	
 	
 	acf.field = {
 		

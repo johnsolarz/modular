@@ -1,0 +1,27 @@
+.jumbotron-module {
+  .jumbotron {
+    background-repeat: no-repeat;
+    // remove default bottom margin
+    margin-bottom: 0;
+    // remove default padding
+    padding: 0;
+    // ensure background-image fills screen
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    .container & {
+      // remove default border-radius
+      border-radius: 0;
+    }
+
+    .jumbotron__text {
+      padding: 100px 0;
+
+      @media screen and (min-width: @grid-float-breakpoint) {
+        padding: 200px 0;
+      }
+    }
+  }
+}

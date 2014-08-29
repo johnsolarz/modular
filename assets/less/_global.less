@@ -1,17 +1,33 @@
-// Fullwidth, fullscreen setup
+//
+// Fullwidth wrappers
 // --------------------------------------------------
 
-html, body {
-  height: 100%;
-}
-
-// Fullwidth container and images
 .fullwidth,
 .fullwidth img {
   width: 100%;
 }
 
-// Fullscreen container
+.fullwidth,
+.fullwidth [class*="col-"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.fullwidth .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+// Fullscreen background images
+// http://www.minimit.com/articles/lets-animate/parallax-backgrounds-with-centered-content
+// --------------------------------------------------
+
+// Fullscreen setup
+html, body {
+  height: 100%;
+}
+
 .fullscreen {
   width: 100%;
   min-height: 100%;
@@ -23,7 +39,22 @@ html, body {
   }
 }
 
-// Fullscreen images
+// Background images setup
+.background-image {
+  // Background-image src added inline
+  background-repeat: no-repeat;
+  // Customize background-position as needed
+  background-position: 50% 50%;
+  // ie8- graceful degradation
+  background-position: 50% 50%\9 !important;
+
+  // Parallax images are attachment-fixed via js
+  &.fixed {
+    background-attachment: fixed;
+  }
+}
+
+// Fullscreen video cover images
 .fullscreen-image {
   min-width: 100%;
   min-height: 100%;
@@ -32,27 +63,88 @@ html, body {
 }
 
 
-
-// Background images setup
+// Fluidbox images
+// https://github.com/terrymun/Fluidbox
 // --------------------------------------------------
 
-// Parallax images needs to be added inline with data-img-width and data-img-height
-.background-image {
-  background-repeat: no-repeat;
-  background-position: 50% 50%; // set custom background-position as needed
-  background-position: 50% 50%\9 !important; // keep for ie8 graceful degradation
+// Remove any anchor borders and adjust cursor on hover events
+.fluidbox {
+  border: none;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
 
-  &.fixed {
-    background-attachment: fixed;
+  &:hover {
+    border: none;
+  }
+}
+
+.fluidbox-opened {
+  cursor: -webkit-zoom-out;
+  cursor: -moz-zoom-out;
+}
+
+
+// Scroll buttons
+// --------------------------------------------------
+
+.scroll-btn {
+  border-bottom: none;
+  height: 42px;
+  position: absolute;
+  text-align: center;
+  width: 42px;
+  z-index: 1000;
+
+  &:hover {
+    border-bottom: none;
+    opacity: 1 !important; // Overrides js animated opacity
+  }
+
+  &.scroll-btn--up {
+    top: 0;
+    left: 50%;
+    margin-left: -21px;
+  }
+
+  &.scroll-btn--right {
+    right: 20px;
+    top: 50%;
+    margin-top: -21px;
+  }
+
+  &.scroll-btn--down {
+    bottom: -42px; // Icon height animated on imagesLoaded
+    left: 50%;
+    margin-left: -21px;
+  }
+
+  &.scroll-btn--left {
+    left: 20px;
+    top: 50%;
+    margin-top: -21px;
   }
 }
 
 
-
-// Module helpers
+//
+// Scaffolding
 // --------------------------------------------------
 
-// Down and dirty class to clear modules, columns, etc.
+// Links
+a {
+
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid @text-color;
+    text-decoration: none;
+  }
+
+  &:focus {
+    .tab-focus();
+  }
+}
+
+// Helper clear class for modules, columns, etc.
 .clear {
   clear: both;
 }

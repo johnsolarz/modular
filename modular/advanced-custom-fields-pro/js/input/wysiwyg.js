@@ -1,37 +1,30 @@
 (function($){
 	
-	acf.fields.wysiwyg = {
+	acf.fields.wysiwyg = acf.field.extend({
 		
-		$field:		null,
-		$textarea:	null,	
-		settings:	{},
-		toolbars:	{},
+		type: 'wysiwyg',
+		$el: null,
+		$textarea: null,
+		toolbars: {},
 		
-		focus: function( $field ){
-			
-			
-			// $field may be an internal element
-			if( !acf.is_field($field) ) {
-				
-				$field = acf.get_closest_field( $field );
-				
-			}
-			
+		actions: {
+			'ready':		'initialize',
+			'append':		'initialize',
+			'remove':		'disable',
+			'sortstart':	'disable',
+			'sortstop':		'enable'
+		},
+		
+		focus: function(){
 			
 			// update vars
-			this.$field = $field;
-			this.$el = $field.find('.wp-editor-wrap');
+			this.$el = this.$field.find('.wp-editor-wrap').last();
 			this.$textarea = this.$el.find('textarea');
+			
+			
+			// settings
 			this.settings = acf.get_data( this.$el );
-			
-			
-			// custom
 			this.settings.id = this.$textarea.attr('id');
-			
-			
-			// return this for chaining
-			return this;
-			
 		},
 		
 		initialize: function(){
@@ -68,7 +61,7 @@
 
 			// initialize qtInit
 			try {
-				
+			
 				var qtag = quicktags( qtInit );
 				
 				this._buttonsInit( qtag );
@@ -76,6 +69,7 @@
 			} catch(e){}
 			
 		},
+		
 		
 		get_mceInit : function(){
 			
@@ -340,74 +334,19 @@
 			
 		},
 		
-		add_actions: function(){
-			
-			// add actions
-			acf.add_action('ready', this.on_ready);
-			acf.add_action('append', this.on_append);
-			acf.add_action('remove', this.on_remove);
-			acf.add_action('sortstart', this.on_sortstart);
-			acf.add_action('sortstop', this.on_sortstop);
-					
-		},
+	});
+	
+
+	$(document).ready(function(){
 		
-		on_ready : function( $el ){
+		// move acf_content wysiwyg
+		if( $('#wp-acf_content-wrap').exists() ) {
 			
-			// move acf_content wysiwyg
-			if( $('#wp-acf_content-wrap').exists() ) {
-				
-				$('#wp-acf_content-wrap').parent().appendTo('body');
-				
-			}
-			
-			acf.fields.wysiwyg.on_append( $el );
-			
-		},
-		
-		on_append: function( $el ){
-			
-			acf.get_fields({ type : 'wysiwyg'}, $el).each(function(){
-				
-				acf.fields.wysiwyg.focus( $(this) ).initialize();
-			
-			});
-			
-		},
-		
-		on_remove: function( $el ){
-		
-			acf.get_fields({ type : 'wysiwyg'}, $el).each(function(){
-				
-				acf.fields.wysiwyg.focus( $(this) ).disable();
-				
-			});
-			
-		},
-		
-		on_sortstart: function( $item, $placeholder ){
-			
-			acf.get_fields({ type : 'wysiwyg'}, $item).each(function(){
-				
-				acf.fields.wysiwyg.focus( $(this) ).disable();
-				
-			});
-			
-		},
-		
-		on_sortstop: function( $el ){
-		
-			acf.get_fields({ type : 'wysiwyg'}, $el).each(function(){
-				
-				acf.fields.wysiwyg.focus( $(this) ).enable();
-				
-			});
+			$('#wp-acf_content-wrap').parent().appendTo('body');
 			
 		}
 		
-	};
-	
-	
-	// add actions
-	acf.fields.wysiwyg.add_actions();		
+	});
+
 
 })(jQuery);

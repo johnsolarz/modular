@@ -326,17 +326,26 @@
 		render: function(){
 			
 			// validate ui
-			if( !this.settings.ui ) {
+			if( !this.$select.exists() || !this.settings.ui ) {
 				
 				return false;
 				
 			}
+			
 			
 			add_select2( this.$select, this.settings );
 			
 		},
 		
 		remove: function(){
+			
+			// validate ui
+			if( !this.$select.exists() || !this.settings.ui ) {
+				
+				return false;
+				
+			}
+			
 			
 			remove_select2( this.$select );
 			

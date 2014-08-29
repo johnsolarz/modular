@@ -2,11 +2,12 @@
 /**
  * Social media sharing buttons module
  *
- * Include in your theme template: <?php get_template_part('modular/templates/social', 'sharing'); ?>
+ * Include in your theme: <?php get_template_part('modular/templates/social', 'sharing'); ?>
  */
 // Social media share button options (T/F)
 $facebook_share  = get_field('facebook_share', 'option');
 $google_share    = get_field('google_share', 'option');
+$houzz_share     = get_field('houzz_share', 'option');
 $linkedin_share  = get_field('linkedin_share', 'option');
 $pinterest_share = get_field('pinterest_share', 'option');
 $twitter_share   = get_field('twitter_share', 'option');
@@ -20,7 +21,7 @@ $twitter_handle      = str_replace( $twitter_handle_opts,'', $twitter_link  );
 $title     = get_the_title();
 $permalink = get_permalink();
 
-if ($facebook_share || $google_share || $linkedin_share || $pinterset_share || $twitter_share) :
+if ($facebook_share || $google_share || $houzz_share || $linkedin_share || $pinterset_share || $twitter_share) :
 ?>
   <div class="social-sharing-module">
     <div class="inner">
@@ -28,6 +29,9 @@ if ($facebook_share || $google_share || $linkedin_share || $pinterset_share || $
         <?php
           if ($google_share) {
             echo '<li><div class="g-plusone" data-size="medium" data-href="' . $permalink . '" data-annotation="none"></div></li>';
+          }
+          if ($houzz_share) {
+            echo '<li><a class="houzz-share-button" data-url="' . $permalink . '" data-hzid="Your HZID" data-title="' . $title . '" data-img="http://yoursite/path/to/product/image.jpg " data-desc="Product description text " data-category="Category keywords " data-showcount="1 " href="http://www.houzz.com">Houzz</a></li>';
           }
           if ($linkedin_share) {
             echo '<li><script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script><script type="IN/Share"></script></li>';

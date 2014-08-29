@@ -94,6 +94,7 @@ add_action('wp_head', 'acf_options_page_styles');
 // Social media share button options (T/F)
 $facebook_share  = get_field('facebook_share', 'option');
 $google_share    = get_field('google_share', 'option');
+$houzz_share     = get_field('houzz_share', 'option');
 $linkedin_share  = get_field('linkedin_share', 'option'); // Inline in social-sharing.php
 $pinterest_share = get_field('pinterest_share', 'option');
 $twitter_share   = get_field('twitter_share', 'option');
@@ -129,12 +130,19 @@ if ($google_share) {
   add_action('wp_footer', 'google_share_script');
 }
 
-if ($pinterset_share) {
-  function pinterset_share_script() {
+if ($houzz_share) {
+  function houzz_share_script() {
+    echo "\n\t<script>(function(d,s,id){if(!d.getElementById(id)){var js=d.createElement(s);js.id=id;js.async=true;js.src=\"//platform.houzz.com/js/widgets.js?\"+(new Date().getTime());var ss=d.getElementsByTagName(s)[0];ss.parentNode.insertBefore(js,ss);}})(document,\"script\",\"houzzwidget-js\");</script>\n";
+  }
+  add_action('wp_footer', 'houzz_share_script');
+}
+
+if ($pinterest_share) {
+  function pinterest_share_script() {
     echo "\n\t<script type=\"text/javascript\" src=\"//assets.pinterest.com/js/pinit.js\">\n";
     echo "\t</script>\n";
   }
-  add_action('wp_footer', 'pinterset_share_script');
+  add_action('wp_footer', 'pinterest_share_script');
 }
 
 if ($twitter_share) {

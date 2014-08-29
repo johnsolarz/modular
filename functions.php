@@ -34,7 +34,7 @@ foreach ($roots_includes as $file) {
 unset($file, $filepath);
 
 /**
- * Include Advanced Custom Fields in theme
+ * Advanced Custom Fields
  *
  * Hook in and customize the url / path to match our environment and optionally hide the admin UI.
  * http://support.advancedcustomfields.com/forums/topic/acf-5-pro-wonky-admin-styles/
@@ -52,6 +52,6 @@ add_filter('acf/settings/show_admin', function( $path ){
   return true; // Set false to hide UI in admin
 });
 
-include_once('modular/advanced-custom-fields-pro/acf.php');    // ACF5 Pro plugin
-require_once locate_template('/modular/options.php');          // Options pages and styles
-require_once locate_template('/modular/fields.php');           // Locally registered field groups
+include_once('modular/advanced-custom-fields-pro/acf.php');      // ACF5 Pro plugin
+require_once locate_template('/modular/options.php');            // Options pages and styles
+require_once locate_template('/modular/fields.php');             // Locally registered field groups

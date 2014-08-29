@@ -953,26 +953,33 @@ function acf_get_pretty_post_types( $post_types = array() ) {
 	$ref = array();
 	$r = array();
 	
-	foreach( array_keys($post_types) as $i ) {
+	foreach( $post_types as $post_type ) {
 		
 		// vars
-		$post_type = acf_extract_var( $post_types, $i);
-		$obj = get_post_type_object($post_type);
-		$name = $obj->labels->singular_name;
+		$label = $post_type;
 		
 		
-		// append to r
-		$r[ $post_type ] = $name;
-		
-		
-		// increase counter
-		if( !isset($ref[ $name ]) ) {
+		// check that object exists (case exists when importing field group from another install and post type does not exist)
+		if( post_type_exists($post_type) ) {
 			
-			$ref[ $name ] = 0;
+			$obj = get_post_type_object($post_type);
+			$label = $obj->labels->singular_name;
 			
 		}
 		
-		$ref[ $name ]++;
+		
+		// append to r
+		$r[ $post_type ] = $label;
+		
+		
+		// increase counter
+		if( !isset($ref[ $label ]) ) {
+			
+			$ref[ $label ] = 0;
+			
+		}
+		
+		$ref[ $label ]++;
 	}
 	
 	

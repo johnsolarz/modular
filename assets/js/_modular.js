@@ -419,7 +419,7 @@ var Modular = {
           //removed: function(){}           //{NEW} Callback: function(slider) - Fires after a slide is removed
         });
 
-        $('.blockquote-module .flexslider')
+        $('.quote-module .flexslider')
         .flexslider({
           animation: 'fade',
           directionNav: false

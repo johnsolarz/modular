@@ -2,13 +2,15 @@
 /**
  * Social media links module
  *
- * Include in your theme template: <?php get_template_part('modular/templates/social', 'links'); ?>
+ * Include in your theme: <?php get_template_part('modular/templates/social', 'links'); ?>
  */
 // URL values
 $facebook_link  = get_field('facebook_link', 'option');
 $facebook_text  = get_field('facebook_link_text', 'option');
 $google_link    = get_field('google_link', 'option');
 $google_text    = get_field('google_link_text', 'option');
+$houzz_link     = get_field('houzz_link', 'option');
+$houzz_text     = get_field('houzz_link_text', 'option');
 $linkedin_link  = get_field('linkedin_link', 'option');
 $linkedin_text  = get_field('linkedin_link_text', 'option');
 $pinterest_link = get_field('pinterest_link', 'option');
@@ -31,6 +33,9 @@ if($facebook_link) {
 }
 if($google_link) {
   echo '<li><a href="' . $google_link . '"><i class="fa fa-google-plus-square"></i>' . (($google_text)?' ' . $google_text:'') . '</a></li>';
+}
+if($houzz_link) {
+  echo '<li><a href="' . $houzz_link . '"><i class="fa fa-home"></i>' . (($houzz_text)?' ' . $houzz_text:'') . '</a></li>';
 }
 if($linkedin_link) {
   echo '<li><a href="' . $linkedin_link . '"><i class="fa fa-linkedin-square"></i>' . (($linkedin_text)?' ' . $linkedin_text:'') . '</a></li>';
