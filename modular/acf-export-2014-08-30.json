@@ -202,6 +202,84 @@
         "max":"",
         "layouts":[
           {
+            "key":"53bb6384b688f",
+            "name":"blockquote",
+            "label":"Blockquote",
+            "display":"row",
+            "sub_fields":[
+              {
+                "key":"field_538b82df8a6e3",
+                "label":"CSS Class",
+                "name":"blockquote_class",
+                "prefix":"",
+                "type":"text",
+                "instructions":"",
+                "required":0,
+                "conditional_logic":0,
+                "column_width":"",
+                "default_value":"",
+                "placeholder":"",
+                "prepend":"",
+                "append":"",
+                "maxlength":"",
+                "readonly":0,
+                "disabled":0
+              },
+              {
+                "key":"field_538b82df8a6e4",
+                "label":"Blockquote",
+                "name":"blockquote",
+                "prefix":"",
+                "type":"repeater",
+                "instructions":"",
+                "required":0,
+                "conditional_logic":0,
+                "column_width":"",
+                "min":"",
+                "max":"",
+                "layout":"row",
+                "button_label":"Add Blockquote",
+                "sub_fields":[
+                  {
+                    "key":"field_538b830a8a6e6",
+                    "label":"Text",
+                    "name":"blockquote_text",
+                    "prefix":"",
+                    "type":"wysiwyg",
+                    "instructions":"",
+                    "required":0,
+                    "conditional_logic":0,
+                    "column_width":"",
+                    "default_value":"",
+                    "tabs":"all",
+                    "toolbar":"basic",
+                    "media_upload":0
+                  },
+                  {
+                    "key":"field_538b83198a6e7",
+                    "label":"Source",
+                    "name":"blockquote_source",
+                    "prefix":"",
+                    "type":"text",
+                    "instructions":"",
+                    "required":0,
+                    "conditional_logic":0,
+                    "column_width":"",
+                    "default_value":"",
+                    "placeholder":"",
+                    "prepend":"",
+                    "append":"",
+                    "maxlength":"",
+                    "readonly":0,
+                    "disabled":0
+                  }
+                ]
+              }
+            ],
+            "min":"",
+            "max":""
+          },
+          {
             "key":"53bb6384a8c57",
             "name":"embed",
             "label":"Embed",
@@ -333,7 +411,7 @@
                 "name":"gallery_images",
                 "prefix":"",
                 "type":"gallery",
-                "instructions":"200kb suggested file size, JPG format. Supports caption and alt text for SEO",
+                "instructions":"Suggested file size +\/- 200kb. Supports caption and alt text for SEO",
                 "required":0,
                 "conditional_logic":0,
                 "column_width":"",
@@ -428,13 +506,15 @@
                 "column_width":"",
                 "choices":{
                   "image":"Image",
+                  "img-lightbox":"Lightbox",
+                  "img-link":"Link",
                   "img-circle":"Circle",
                   "img-rounded":"Rounded",
                   "img-thumbnail":"Thumbnail"
                 },
-                "default_value":[
-                  
-                ],
+                "default_value":{
+                  "image":"image"
+                },
                 "allow_null":0,
                 "multiple":0,
                 "ui":0,
@@ -451,29 +531,23 @@
                 "type":"text",
                 "instructions":"",
                 "required":0,
-                "conditional_logic":0,
+                "conditional_logic":[
+                  [
+                    {
+                      "field":"field_53946d788b835",
+                      "operator":"==",
+                      "value":"img-link"
+                    }
+                  ]
+                ],
                 "column_width":"",
                 "default_value":"",
                 "placeholder":"http:\/\/",
                 "prepend":"",
                 "append":"",
-                "formatting":"html",
                 "maxlength":"",
                 "readonly":0,
                 "disabled":0
-              },
-              {
-                "key":"field_53cec402b6ab9",
-                "label":"Lightbox",
-                "name":"lightbox",
-                "prefix":"",
-                "type":"true_false",
-                "instructions":"",
-                "required":0,
-                "conditional_logic":0,
-                "column_width":"",
-                "message":"",
-                "default_value":0
               },
               {
                 "key":"field_538b8ae58a6ff",
@@ -481,7 +555,7 @@
                 "name":"image",
                 "prefix":"",
                 "type":"image",
-                "instructions":"200kb suggested file size, JPG format. Supports caption and alt text for SEO",
+                "instructions":"Suggested file size +\/- 200kb. Supports caption and alt text for SEO",
                 "required":0,
                 "conditional_logic":0,
                 "column_width":"",
@@ -594,9 +668,9 @@
                   "list-justified":"Justified",
                   "list-group":"Group"
                 },
-                "default_value":[
-                  
-                ],
+                "default_value":{
+                  "list-unordered":"list-unordered"
+                },
                 "allow_null":0,
                 "multiple":0,
                 "ui":0,
@@ -648,84 +722,6 @@
             "max":""
           },
           {
-            "key":"53bb6384b688f",
-            "name":"quote",
-            "label":"Quote",
-            "display":"row",
-            "sub_fields":[
-              {
-                "key":"field_538b82df8a6e3",
-                "label":"CSS Class",
-                "name":"quote_class",
-                "prefix":"",
-                "type":"text",
-                "instructions":"",
-                "required":0,
-                "conditional_logic":0,
-                "column_width":"",
-                "default_value":"",
-                "placeholder":"",
-                "prepend":"",
-                "append":"",
-                "maxlength":"",
-                "readonly":0,
-                "disabled":0
-              },
-              {
-                "key":"field_538b82df8a6e4",
-                "label":"Quote",
-                "name":"quote",
-                "prefix":"",
-                "type":"repeater",
-                "instructions":"",
-                "required":0,
-                "conditional_logic":0,
-                "column_width":"",
-                "min":"",
-                "max":"",
-                "layout":"row",
-                "button_label":"Add Blockquote",
-                "sub_fields":[
-                  {
-                    "key":"field_538b830a8a6e6",
-                    "label":"Text",
-                    "name":"quote_text",
-                    "prefix":"",
-                    "type":"wysiwyg",
-                    "instructions":"",
-                    "required":0,
-                    "conditional_logic":0,
-                    "column_width":"",
-                    "default_value":"",
-                    "tabs":"all",
-                    "toolbar":"basic",
-                    "media_upload":0
-                  },
-                  {
-                    "key":"field_538b83198a6e7",
-                    "label":"Source",
-                    "name":"quote_source",
-                    "prefix":"",
-                    "type":"text",
-                    "instructions":"",
-                    "required":0,
-                    "conditional_logic":0,
-                    "column_width":"",
-                    "default_value":"",
-                    "placeholder":"",
-                    "prepend":"",
-                    "append":"",
-                    "maxlength":"",
-                    "readonly":0,
-                    "disabled":0
-                  }
-                ]
-              }
-            ],
-            "min":"",
-            "max":""
-          },
-          {
             "key":"53bb6384ada25",
             "name":"table",
             "label":"Table",
@@ -766,9 +762,9 @@
                   "table table-hover":"Hover Rows",
                   "table table-condensed":"Condensed"
                 },
-                "default_value":[
-                  
-                ],
+                "default_value":{
+                  "table":"table"
+                },
                 "allow_null":0,
                 "multiple":0,
                 "ui":0,
@@ -1209,7 +1205,7 @@
             "name":"cover_image",
             "prefix":"",
             "type":"image",
-            "instructions":"200kb suggested file size, JPG format",
+            "instructions":"Suggested file size +\/- 200kb",
             "required":0,
             "conditional_logic":0,
             "column_width":"",
@@ -1457,7 +1453,7 @@
                 "name":"slide_image",
                 "prefix":"",
                 "type":"image",
-                "instructions":"200kb suggested file size, JPG format. Supports alt text for SEO",
+                "instructions":"Suggested file size +\/- 200kb. Supports alt text for SEO",
                 "required":0,
                 "conditional_logic":0,
                 "column_width":"",
@@ -1805,6 +1801,84 @@
                 "max":"",
                 "layouts":[
                   {
+                    "key":"53bb63848dee5",
+                    "name":"blockquote",
+                    "label":"Blockquote",
+                    "display":"row",
+                    "sub_fields":[
+                      {
+                        "key":"field_53fffa91b7b4e",
+                        "label":"CSS Class",
+                        "name":"blockquote_class",
+                        "prefix":"",
+                        "type":"text",
+                        "instructions":"",
+                        "required":0,
+                        "conditional_logic":0,
+                        "column_width":"",
+                        "default_value":"",
+                        "placeholder":"",
+                        "prepend":"",
+                        "append":"",
+                        "maxlength":"",
+                        "readonly":0,
+                        "disabled":0
+                      },
+                      {
+                        "key":"field_53fffa91b7bff",
+                        "label":"Blockquote",
+                        "name":"blockquote",
+                        "prefix":"",
+                        "type":"repeater",
+                        "instructions":"",
+                        "required":0,
+                        "conditional_logic":0,
+                        "column_width":"",
+                        "min":"",
+                        "max":"",
+                        "layout":"row",
+                        "button_label":"Add Blockquote",
+                        "sub_fields":[
+                          {
+                            "key":"field_53fffa922fb24",
+                            "label":"Text",
+                            "name":"blockquote_text",
+                            "prefix":"",
+                            "type":"wysiwyg",
+                            "instructions":"",
+                            "required":0,
+                            "conditional_logic":0,
+                            "column_width":"",
+                            "default_value":"",
+                            "tabs":"all",
+                            "toolbar":"basic",
+                            "media_upload":0
+                          },
+                          {
+                            "key":"field_53fffa922fbcc",
+                            "label":"Source",
+                            "name":"blockquote_source",
+                            "prefix":"",
+                            "type":"text",
+                            "instructions":"",
+                            "required":0,
+                            "conditional_logic":0,
+                            "column_width":"",
+                            "default_value":"",
+                            "placeholder":"",
+                            "prepend":"",
+                            "append":"",
+                            "maxlength":"",
+                            "readonly":0,
+                            "disabled":0
+                          }
+                        ]
+                      }
+                    ],
+                    "min":"",
+                    "max":""
+                  },
+                  {
                     "key":"53bb63847fd1b",
                     "name":"embed",
                     "label":"Embed",
@@ -2103,7 +2177,7 @@
                         "name":"gallery_images",
                         "prefix":"",
                         "type":"gallery",
-                        "instructions":"200kb suggested file size, JPG format. Supports caption and alt text for SEO",
+                        "instructions":"Suggested file size +\/- 200kb. Supports caption and alt text for SEO",
                         "required":0,
                         "conditional_logic":0,
                         "column_width":"",
@@ -2198,13 +2272,15 @@
                         "column_width":"",
                         "choices":{
                           "image":"Image",
+                          "img-lightbox":"Lightbox",
+                          "img-link":"Link",
                           "img-circle":"Circle",
                           "img-rounded":"Rounded",
                           "img-thumbnail":"Thumbnail"
                         },
-                        "default_value":[
-                          
-                        ],
+                        "default_value":{
+                          "image":"image"
+                        },
                         "allow_null":0,
                         "multiple":0,
                         "ui":0,
@@ -2221,29 +2297,23 @@
                         "type":"text",
                         "instructions":"",
                         "required":0,
-                        "conditional_logic":0,
+                        "conditional_logic":[
+                          [
+                            {
+                              "field":"field_53fffa91b6b19",
+                              "operator":"==",
+                              "value":"img-link"
+                            }
+                          ]
+                        ],
                         "column_width":"",
                         "default_value":"",
                         "placeholder":"http:\/\/",
                         "prepend":"",
                         "append":"",
-                        "formatting":"html",
                         "maxlength":"",
                         "readonly":0,
                         "disabled":0
-                      },
-                      {
-                        "key":"field_53fffa91b6c7b",
-                        "label":"Lightbox",
-                        "name":"lightbox",
-                        "prefix":"",
-                        "type":"true_false",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "message":"",
-                        "default_value":0
                       },
                       {
                         "key":"field_53fffa91b6d2d",
@@ -2251,7 +2321,7 @@
                         "name":"image",
                         "prefix":"",
                         "type":"image",
-                        "instructions":"200kb suggested file size, JPG format. Supports caption and alt text for SEO",
+                        "instructions":"Suggested file size +\/- 200kb. Supports caption and alt text for SEO",
                         "required":0,
                         "conditional_logic":0,
                         "column_width":"",
@@ -2405,7 +2475,7 @@
                         "name":"jumbotron_image",
                         "prefix":"",
                         "type":"image",
-                        "instructions":"200kb suggested file size, JPG format.",
+                        "instructions":"Suggested file size +\/- 200kb",
                         "required":0,
                         "conditional_logic":0,
                         "column_width":"",
@@ -2705,84 +2775,6 @@
                     "max":""
                   },
                   {
-                    "key":"53bb63848dee5",
-                    "name":"quote",
-                    "label":"Quote",
-                    "display":"row",
-                    "sub_fields":[
-                      {
-                        "key":"field_53fffa91b7b4e",
-                        "label":"CSS Class",
-                        "name":"quote_class",
-                        "prefix":"",
-                        "type":"text",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "default_value":"",
-                        "placeholder":"",
-                        "prepend":"",
-                        "append":"",
-                        "maxlength":"",
-                        "readonly":0,
-                        "disabled":0
-                      },
-                      {
-                        "key":"field_53fffa91b7bff",
-                        "label":"Quote",
-                        "name":"quote",
-                        "prefix":"",
-                        "type":"repeater",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "min":"",
-                        "max":"",
-                        "layout":"row",
-                        "button_label":"Add Quote",
-                        "sub_fields":[
-                          {
-                            "key":"field_53fffa922fb24",
-                            "label":"Text",
-                            "name":"quote_text",
-                            "prefix":"",
-                            "type":"wysiwyg",
-                            "instructions":"",
-                            "required":0,
-                            "conditional_logic":0,
-                            "column_width":"",
-                            "default_value":"",
-                            "tabs":"all",
-                            "toolbar":"basic",
-                            "media_upload":0
-                          },
-                          {
-                            "key":"field_53fffa922fbcc",
-                            "label":"Source",
-                            "name":"quote_source",
-                            "prefix":"",
-                            "type":"text",
-                            "instructions":"",
-                            "required":0,
-                            "conditional_logic":0,
-                            "column_width":"",
-                            "default_value":"",
-                            "placeholder":"",
-                            "prepend":"",
-                            "append":"",
-                            "maxlength":"",
-                            "readonly":0,
-                            "disabled":0
-                          }
-                        ]
-                      }
-                    ],
-                    "min":"",
-                    "max":""
-                  },
-                  {
                     "key":"53bb638485396",
                     "name":"table",
                     "label":"Table",
@@ -3046,11 +3038,11 @@
     "hide_on_screen":""
   },
   {
-    "key":"group_53ffa870335a8",
+    "key":"group_5400dd497a60d",
     "title":"Sections: Footer",
     "fields":[
       {
-        "key":"field_53ffa8703eeb1",
+        "key":"field_5400dd4985318",
         "label":"Add a section, add columns, then add content to create your layout.",
         "name":"section_footer",
         "prefix":"",
@@ -3064,7 +3056,7 @@
         "button_label":"Add Section",
         "sub_fields":[
           {
-            "key":"field_53ffa87040fe0",
+            "key":"field_5400dd49877ec",
             "label":"Section ID",
             "name":"section_id",
             "prefix":"",
@@ -3082,7 +3074,7 @@
             "disabled":0
           },
           {
-            "key":"field_53ffa87041088",
+            "key":"field_5400dd4987896",
             "label":"Section Class",
             "name":"section_class",
             "prefix":"",
@@ -3100,7 +3092,7 @@
             "disabled":0
           },
           {
-            "key":"field_53ffa8704112d",
+            "key":"field_5400dd498793b",
             "label":"Section Wrapper",
             "name":"section_wrapper",
             "prefix":"",
@@ -3125,7 +3117,7 @@
             "readonly":0
           },
           {
-            "key":"field_53ffa870411cf",
+            "key":"field_5400dd49879de",
             "label":"Section Layout",
             "name":"section_layout",
             "prefix":"",
@@ -3150,12 +3142,12 @@
             "readonly":0
           },
           {
-            "key":"field_53ffa87041272",
+            "key":"field_5400dd4987a81",
             "label":"Columns",
             "name":"column",
             "prefix":"",
             "type":"repeater",
-            "instructions":"Columns automatically stack on mobile",
+            "instructions":"Columns automatically adjust on mobile",
             "required":0,
             "conditional_logic":0,
             "column_width":"",
@@ -3165,7 +3157,7 @@
             "button_label":"Add Column",
             "sub_fields":[
               {
-                "key":"field_53ffa8704baee",
+                "key":"field_5400dd4992c93",
                 "label":"Column Class",
                 "name":"column_class",
                 "prefix":"",
@@ -3183,7 +3175,7 @@
                 "disabled":0
               },
               {
-                "key":"field_53ffa8704bb99",
+                "key":"field_5400dd4992d42",
                 "label":"Column Width",
                 "name":"column_width",
                 "prefix":"",
@@ -3218,7 +3210,7 @@
                 "readonly":0
               },
               {
-                "key":"field_53ffa8704bc3e",
+                "key":"field_5400dd4992deb",
                 "label":"Column Offset",
                 "name":"column_offset",
                 "prefix":"",
@@ -3253,7 +3245,7 @@
                 "readonly":0
               },
               {
-                "key":"field_53ffa8704bce2",
+                "key":"field_5400dd4992e8e",
                 "label":"Content",
                 "name":"content",
                 "prefix":"",
@@ -3267,13 +3259,91 @@
                 "max":"",
                 "layouts":[
                   {
+                    "key":"53bb63848dee5",
+                    "name":"blockquote",
+                    "label":"Blockquote",
+                    "display":"row",
+                    "sub_fields":[
+                      {
+                        "key":"field_5400dd499e42e",
+                        "label":"CSS Class",
+                        "name":"blockquote_class",
+                        "prefix":"",
+                        "type":"text",
+                        "instructions":"",
+                        "required":0,
+                        "conditional_logic":0,
+                        "column_width":"",
+                        "default_value":"",
+                        "placeholder":"",
+                        "prepend":"",
+                        "append":"",
+                        "maxlength":"",
+                        "readonly":0,
+                        "disabled":0
+                      },
+                      {
+                        "key":"field_5400dd499e4d9",
+                        "label":"Blockquote",
+                        "name":"blockquote",
+                        "prefix":"",
+                        "type":"repeater",
+                        "instructions":"",
+                        "required":0,
+                        "conditional_logic":0,
+                        "column_width":"",
+                        "min":"",
+                        "max":"",
+                        "layout":"row",
+                        "button_label":"Add Blockquote",
+                        "sub_fields":[
+                          {
+                            "key":"field_5400dd49a4b0e",
+                            "label":"Text",
+                            "name":"blockquote_text",
+                            "prefix":"",
+                            "type":"wysiwyg",
+                            "instructions":"",
+                            "required":0,
+                            "conditional_logic":0,
+                            "column_width":"",
+                            "default_value":"",
+                            "tabs":"all",
+                            "toolbar":"basic",
+                            "media_upload":0
+                          },
+                          {
+                            "key":"field_5400dd49a4bba",
+                            "label":"Source",
+                            "name":"blockquote_source",
+                            "prefix":"",
+                            "type":"text",
+                            "instructions":"",
+                            "required":0,
+                            "conditional_logic":0,
+                            "column_width":"",
+                            "default_value":"",
+                            "placeholder":"",
+                            "prepend":"",
+                            "append":"",
+                            "maxlength":"",
+                            "readonly":0,
+                            "disabled":0
+                          }
+                        ]
+                      }
+                    ],
+                    "min":"",
+                    "max":""
+                  },
+                  {
                     "key":"53bb63847fd1b",
                     "name":"embed",
                     "label":"Embed",
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa87054af2",
+                        "key":"field_5400dd499e57d",
                         "label":"CSS Class",
                         "name":"embed_class",
                         "prefix":"",
@@ -3291,7 +3361,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87054b94",
+                        "key":"field_5400dd499e61f",
                         "label":"Embed",
                         "name":"embed",
                         "prefix":"",
@@ -3314,7 +3384,7 @@
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa87055da5",
+                        "key":"field_5400dd499e6c1",
                         "label":"CSS Class",
                         "name":"filter_class",
                         "prefix":"",
@@ -3332,7 +3402,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87055e48",
+                        "key":"field_5400dd499e764",
                         "label":"Filters",
                         "name":"filter",
                         "prefix":"",
@@ -3347,7 +3417,7 @@
                         "button_label":"Add Filter",
                         "sub_fields":[
                           {
-                            "key":"field_53ffa870bbb72",
+                            "key":"field_5400dd49b5363",
                             "label":"Title",
                             "name":"title",
                             "prefix":"",
@@ -3366,7 +3436,7 @@
                             "disabled":0
                           },
                           {
-                            "key":"field_53ffa870bbc1a",
+                            "key":"field_5400dd49b540e",
                             "label":"Target",
                             "name":"target",
                             "prefix":"",
@@ -3386,7 +3456,7 @@
                         ]
                       },
                       {
-                        "key":"field_53ffa87055eea",
+                        "key":"field_5400dd499e807",
                         "label":"Create Your Loop",
                         "name":"",
                         "prefix":"",
@@ -3398,7 +3468,7 @@
                         "message":"Register custom <a href=\"http:\/\/codex.wordpress.org\/Function_Reference\/register_post_type\" target=\"_blank\">post types<\/a> and <a href=\"http:\/\/codex.wordpress.org\/Function_Reference\/register_taxonomy\" target=\"_blank\">taxonomies<\/a> in extras.php and edit your loop module as needed."
                       },
                       {
-                        "key":"field_53ffa87055f8d",
+                        "key":"field_5400dd499e8a9",
                         "label":"Post Width",
                         "name":"post_width",
                         "prefix":"",
@@ -3433,7 +3503,7 @@
                         "readonly":0
                       },
                       {
-                        "key":"field_53ffa87056034",
+                        "key":"field_5400dd499e94c",
                         "label":"Post Type",
                         "name":"post_type",
                         "prefix":"",
@@ -3452,7 +3522,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa870560d7",
+                        "key":"field_5400dd499e9f2",
                         "label":"Posts Per Page",
                         "name":"posts_per_page",
                         "prefix":"",
@@ -3481,7 +3551,7 @@
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa870550d4",
+                        "key":"field_5400dd499ea94",
                         "label":"CSS Class",
                         "name":"gallery_class",
                         "prefix":"",
@@ -3499,7 +3569,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87055187",
+                        "key":"field_5400dd499eb38",
                         "label":"Layout",
                         "name":"gallery_layout",
                         "prefix":"",
@@ -3525,7 +3595,7 @@
                         "readonly":0
                       },
                       {
-                        "key":"field_53ffa8705523a",
+                        "key":"field_5400dd499ebde",
                         "label":"Image Width",
                         "name":"gallery_image_width",
                         "prefix":"",
@@ -3560,12 +3630,12 @@
                         "readonly":0
                       },
                       {
-                        "key":"field_53ffa870552ec",
+                        "key":"field_5400dd499ec82",
                         "label":"Images",
                         "name":"gallery_images",
                         "prefix":"",
                         "type":"gallery",
-                        "instructions":"200kb suggested file size, JPG format. Supports caption and alt text for SEO",
+                        "instructions":"Suggested file size +\/- 200kb. Supports caption and alt text for SEO",
                         "required":0,
                         "conditional_logic":0,
                         "column_width":"",
@@ -3585,7 +3655,7 @@
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa87055a65",
+                        "key":"field_5400dd499ed24",
                         "label":"CSS Class",
                         "name":"html_class",
                         "prefix":"",
@@ -3603,7 +3673,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87055b08",
+                        "key":"field_5400dd499edc7",
                         "label":"HTML",
                         "name":"html",
                         "prefix":"",
@@ -3631,7 +3701,7 @@
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa870547b2",
+                        "key":"field_5400dd499ee69",
                         "label":"CSS Class",
                         "name":"image_class",
                         "prefix":"",
@@ -3649,7 +3719,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87054860",
+                        "key":"field_5400dd499ef0c",
                         "label":"Layout",
                         "name":"image_layout",
                         "prefix":"",
@@ -3660,13 +3730,15 @@
                         "column_width":"",
                         "choices":{
                           "image":"Image",
+                          "img-lightbox":"Lightbox",
+                          "img-link":"Link",
                           "img-circle":"Circle",
                           "img-rounded":"Rounded",
                           "img-thumbnail":"Thumbnail"
                         },
-                        "default_value":[
-                          
-                        ],
+                        "default_value":{
+                          "image":"image"
+                        },
                         "allow_null":0,
                         "multiple":0,
                         "ui":0,
@@ -3676,44 +3748,38 @@
                         "readonly":0
                       },
                       {
-                        "key":"field_53ffa87054908",
+                        "key":"field_5400dd499efaf",
                         "label":"Link",
                         "name":"image_link",
                         "prefix":"",
                         "type":"text",
                         "instructions":"",
                         "required":0,
-                        "conditional_logic":0,
+                        "conditional_logic":[
+                          [
+                            {
+                              "field":"field_5400dd499ef0c",
+                              "operator":"==",
+                              "value":"img-link"
+                            }
+                          ]
+                        ],
                         "column_width":"",
                         "default_value":"",
                         "placeholder":"http:\/\/",
                         "prepend":"",
                         "append":"",
-                        "formatting":"html",
                         "maxlength":"",
                         "readonly":0,
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa870549ab",
-                        "label":"Lightbox",
-                        "name":"lightbox",
-                        "prefix":"",
-                        "type":"true_false",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "message":"",
-                        "default_value":0
-                      },
-                      {
-                        "key":"field_53ffa87054a4d",
+                        "key":"field_5400dd499f051",
                         "label":"Image",
                         "name":"image",
                         "prefix":"",
                         "type":"image",
-                        "instructions":"200kb suggested file size, JPG format. Supports caption and alt text for SEO",
+                        "instructions":"Suggested file size +\/- 200kb. Supports caption and alt text for SEO",
                         "required":0,
                         "conditional_logic":0,
                         "column_width":"",
@@ -3732,7 +3798,7 @@
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa87055503",
+                        "key":"field_5400dd499f0f4",
                         "label":"CSS Class",
                         "name":"jumbotron_class",
                         "prefix":"",
@@ -3750,7 +3816,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa870555b5",
+                        "key":"field_5400dd499f196",
                         "label":"Jumbotron Layout",
                         "name":"jumbotron_layout",
                         "prefix":"",
@@ -3776,7 +3842,7 @@
                         "readonly":0
                       },
                       {
-                        "key":"field_53ffa87055667",
+                        "key":"field_5400dd499f239",
                         "label":"Text Align",
                         "name":"jumbotron_text_align",
                         "prefix":"",
@@ -3802,7 +3868,7 @@
                         "readonly":0
                       },
                       {
-                        "key":"field_53ffa87055718",
+                        "key":"field_5400dd499f2db",
                         "label":"Text Color",
                         "name":"jumbotron_text_color",
                         "prefix":"",
@@ -3814,7 +3880,7 @@
                         "default_value":""
                       },
                       {
-                        "key":"field_53ffa870557c5",
+                        "key":"field_5400dd499f37f",
                         "label":"Title",
                         "name":"jumbotron_title",
                         "prefix":"",
@@ -3832,7 +3898,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87055875",
+                        "key":"field_5400dd499f422",
                         "label":"Text",
                         "name":"jumbotron_text",
                         "prefix":"",
@@ -3850,7 +3916,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa8705591f",
+                        "key":"field_5400dd499f4c7",
                         "label":"Background Color",
                         "name":"jumbotron_background",
                         "prefix":"",
@@ -3862,12 +3928,12 @@
                         "default_value":""
                       },
                       {
-                        "key":"field_53ffa870559c2",
+                        "key":"field_5400dd499f569",
                         "label":"Image",
                         "name":"jumbotron_image",
                         "prefix":"",
                         "type":"image",
-                        "instructions":"200kb suggested file size, JPG format.",
+                        "instructions":"Suggested file size +\/- 200kb",
                         "required":0,
                         "conditional_logic":0,
                         "column_width":"",
@@ -3886,7 +3952,7 @@
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa87055bab",
+                        "key":"field_5400dd499f60c",
                         "label":"CSS Class",
                         "name":"line_class",
                         "prefix":"",
@@ -3904,7 +3970,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87055c56",
+                        "key":"field_5400dd499f6af",
                         "label":"Width",
                         "name":"line_width",
                         "prefix":"",
@@ -3924,7 +3990,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87055d01",
+                        "key":"field_5400dd499f998",
                         "label":"Color",
                         "name":"line_color",
                         "prefix":"",
@@ -3946,7 +4012,7 @@
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa87054c38",
+                        "key":"field_5400dd499fa46",
                         "label":"CSS Class",
                         "name":"list_class",
                         "prefix":"",
@@ -3964,7 +4030,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87054cdb",
+                        "key":"field_5400dd499faea",
                         "label":"Layout",
                         "name":"list_layout",
                         "prefix":"",
@@ -3980,9 +4046,9 @@
                           "list-justified":"Justified",
                           "list-group":"Group"
                         },
-                        "default_value":[
-                          
-                        ],
+                        "default_value":{
+                          "list-unordered":"list-unordered"
+                        },
                         "allow_null":0,
                         "multiple":0,
                         "ui":0,
@@ -3992,7 +4058,7 @@
                         "readonly":0
                       },
                       {
-                        "key":"field_53ffa87054d7d",
+                        "key":"field_5400dd499fb8c",
                         "label":"Items",
                         "name":"list_item",
                         "prefix":"",
@@ -4009,7 +4075,7 @@
                         "max":0,
                         "sub_fields":[
                           {
-                            "key":"field_53ffa870731ec",
+                            "key":"field_5400dd4a0eada",
                             "label":"Item",
                             "name":"item",
                             "prefix":"",
@@ -4040,7 +4106,7 @@
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa8705617a",
+                        "key":"field_5400dd499fc31",
                         "label":"Create Your Loop",
                         "name":"",
                         "prefix":"",
@@ -4052,7 +4118,7 @@
                         "message":"Register custom <a href=\"http:\/\/codex.wordpress.org\/Function_Reference\/register_post_type\" target=\"_blank\">post types<\/a> and <a href=\"http:\/\/codex.wordpress.org\/Function_Reference\/register_taxonomy\" target=\"_blank\">taxonomies<\/a> in extras.php and edit your loop module as needed."
                       },
                       {
-                        "key":"field_53ffa8705621c",
+                        "key":"field_5400dd499fcd4",
                         "label":"Post Width",
                         "name":"post_width",
                         "prefix":"",
@@ -4087,7 +4153,7 @@
                         "readonly":0
                       },
                       {
-                        "key":"field_53ffa870562be",
+                        "key":"field_5400dd499fd77",
                         "label":"Post Type",
                         "name":"post_type",
                         "prefix":"",
@@ -4106,7 +4172,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87056361",
+                        "key":"field_5400dd499fe1c",
                         "label":"Posts Per Page",
                         "name":"posts_per_page",
                         "prefix":"",
@@ -4125,7 +4191,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87056403",
+                        "key":"field_5400dd499fec0",
                         "label":"Post Taxonomy",
                         "name":"post_taxonomy",
                         "prefix":"",
@@ -4144,7 +4210,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa870564a5",
+                        "key":"field_5400dd499ff65",
                         "label":"Post Term",
                         "name":"post_term",
                         "prefix":"",
@@ -4167,91 +4233,13 @@
                     "max":""
                   },
                   {
-                    "key":"53bb63848dee5",
-                    "name":"quote",
-                    "label":"Quote",
-                    "display":"row",
-                    "sub_fields":[
-                      {
-                        "key":"field_53ffa8705539e",
-                        "label":"CSS Class",
-                        "name":"quote_class",
-                        "prefix":"",
-                        "type":"text",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "default_value":"",
-                        "placeholder":"",
-                        "prepend":"",
-                        "append":"",
-                        "maxlength":"",
-                        "readonly":0,
-                        "disabled":0
-                      },
-                      {
-                        "key":"field_53ffa87055451",
-                        "label":"Quote",
-                        "name":"quote",
-                        "prefix":"",
-                        "type":"repeater",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "min":"",
-                        "max":"",
-                        "layout":"row",
-                        "button_label":"Add Quote",
-                        "sub_fields":[
-                          {
-                            "key":"field_53ffa87098f5a",
-                            "label":"Text",
-                            "name":"quote_text",
-                            "prefix":"",
-                            "type":"wysiwyg",
-                            "instructions":"",
-                            "required":0,
-                            "conditional_logic":0,
-                            "column_width":"",
-                            "default_value":"",
-                            "tabs":"all",
-                            "toolbar":"basic",
-                            "media_upload":0
-                          },
-                          {
-                            "key":"field_53ffa8709900e",
-                            "label":"Source",
-                            "name":"quote_source",
-                            "prefix":"",
-                            "type":"text",
-                            "instructions":"",
-                            "required":0,
-                            "conditional_logic":0,
-                            "column_width":"",
-                            "default_value":"",
-                            "placeholder":"",
-                            "prepend":"",
-                            "append":"",
-                            "maxlength":"",
-                            "readonly":0,
-                            "disabled":0
-                          }
-                        ]
-                      }
-                    ],
-                    "min":"",
-                    "max":""
-                  },
-                  {
                     "key":"53bb638485396",
                     "name":"table",
                     "label":"Table",
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa87054e2a",
+                        "key":"field_5400dd49a0009",
                         "label":"CSS Class",
                         "name":"table_class",
                         "prefix":"",
@@ -4269,7 +4257,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa87054edd",
+                        "key":"field_5400dd49a00b3",
                         "label":"Layout",
                         "name":"table_layout",
                         "prefix":"",
@@ -4285,9 +4273,9 @@
                           "table table-hover":"Hover Rows",
                           "table table-condensed":"Condensed"
                         },
-                        "default_value":[
-                          
-                        ],
+                        "default_value":{
+                          "table":"table"
+                        },
                         "allow_null":0,
                         "multiple":0,
                         "ui":0,
@@ -4297,7 +4285,7 @@
                         "readonly":0
                       },
                       {
-                        "key":"field_53ffa87054f90",
+                        "key":"field_5400dd49a0156",
                         "label":"Headings",
                         "name":"table_heading",
                         "prefix":"",
@@ -4314,7 +4302,7 @@
                         "max":0,
                         "sub_fields":[
                           {
-                            "key":"field_53ffa8707f96c",
+                            "key":"field_5400dd4a2ce64",
                             "label":"Heading",
                             "name":"heading",
                             "prefix":"",
@@ -4335,7 +4323,7 @@
                         ]
                       },
                       {
-                        "key":"field_53ffa87055022",
+                        "key":"field_5400dd49a01fa",
                         "label":"Rows",
                         "name":"table_row",
                         "prefix":"",
@@ -4352,7 +4340,7 @@
                         "max":0,
                         "sub_fields":[
                           {
-                            "key":"field_53ffa87086659",
+                            "key":"field_5400dd4a35608",
                             "label":"Cells",
                             "name":"row_cell",
                             "prefix":"",
@@ -4369,7 +4357,7 @@
                             "max":0,
                             "sub_fields":[
                               {
-                                "key":"field_53ffa870884b6",
+                                "key":"field_5400dd4a380c0",
                                 "label":"Cell",
                                 "name":"cell",
                                 "prefix":"",
@@ -4402,7 +4390,7 @@
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa87054656",
+                        "key":"field_5400dd49a029d",
                         "label":"CSS Class",
                         "name":"text_class",
                         "prefix":"",
@@ -4420,7 +4408,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa870546ff",
+                        "key":"field_5400dd49a033f",
                         "label":"Text",
                         "name":"text",
                         "prefix":"",
@@ -4445,7 +4433,7 @@
                     "display":"row",
                     "sub_fields":[
                       {
-                        "key":"field_53ffa8705450b",
+                        "key":"field_5400dd49a03e3",
                         "label":"CSS Class",
                         "name":"title_class",
                         "prefix":"",
@@ -4463,7 +4451,7 @@
                         "disabled":0
                       },
                       {
-                        "key":"field_53ffa870545b3",
+                        "key":"field_5400dd49a0486",
                         "label":"Title",
                         "name":"title",
                         "prefix":"",
@@ -5341,7 +5329,7 @@
             "name":"video_image",
             "prefix":"",
             "type":"image",
-            "instructions":"200kb suggested file size, JPG format. Supports alt text for SEO",
+            "instructions":"Suggested file size +\/- 200kb. Supports alt text for SEO",
             "required":1,
             "conditional_logic":0,
             "column_width":"",
@@ -5355,7 +5343,7 @@
             "name":"video_mp4",
             "prefix":"",
             "type":"file",
-            "instructions":"16:9 ratio, 5mb suggested file size. Supports IE, Safari and Chrome",
+            "instructions":"16:9 ratio, suggested file size +\/- 5mb. Supports IE, Safari and Chrome",
             "required":1,
             "conditional_logic":0,
             "column_width":"",
@@ -5368,7 +5356,7 @@
             "name":"video_webm",
             "prefix":"",
             "type":"file",
-            "instructions":"16:9 ratio, 5mb suggested file size. Supports Firefox, Chrome and Opera",
+            "instructions":"16:9 ratio, suggested file size +\/- 5mb. Supports Firefox, Chrome and Opera",
             "required":0,
             "conditional_logic":0,
             "column_width":"",
@@ -5603,7 +5591,7 @@
                 "name":"slide_image",
                 "prefix":"",
                 "type":"image",
-                "instructions":"200kb suggested file size, JPG format. Supports alt text for SEO",
+                "instructions":"Suggested file size +\/- 200kb. Supports alt text for SEO",
                 "required":1,
                 "conditional_logic":0,
                 "column_width":"",
@@ -5617,7 +5605,7 @@
                 "name":"slide_video_mp4",
                 "prefix":"",
                 "type":"file",
-                "instructions":"16:9 ratio, 5mb suggested file size. Supports IE, Safari and Chrome",
+                "instructions":"16:9 ratio, suggested file size +\/- 5mb. Supports IE, Safari and Chrome",
                 "required":1,
                 "conditional_logic":0,
                 "column_width":"",
@@ -5630,7 +5618,7 @@
                 "name":"slide_video_webm",
                 "prefix":"",
                 "type":"file",
-                "instructions":"16:9 ratio, 5mb suggested file size. Supports Firefox, Chrome and Opera",
+                "instructions":"16:9 ratio, suggested file size +\/- 5mb. Supports Firefox, Chrome and Opera",
                 "required":0,
                 "conditional_logic":0,
                 "column_width":"",

@@ -3,13 +3,69 @@
  * Content module
  *
  * Include in your theme: <?php get_template_part('modular/templates/content'); ?>
- * Loops through Content: Embed, Gallery, HTML, Image, Line, List, Quote, Table, Title, Text
+ * Loops through Content: Blockquote, Embed, Gallery, HTML, Image, Line, List, Table, Title, Text
  */
 // Content repeater
 while(has_sub_field('content')):
 
+  // Blockquote content
+  if(get_row_layout() == 'blockquote'):
+
+  $class = strtolower(get_sub_field('blockquote_class'));
+  $quote = get_sub_field('blockquote');
+
+  if($quote):
+?>
+  <div class="blockquote-module<?php if($class) { echo ' ' . $class; } ?>">
+
+    <?php
+      // Multiple blockquote flexslider and <ul>
+      if($quote[1]) {
+        echo '<div class="flexslider"><ul class="slides">';
+      }
+
+      // Blockuote repeater
+      while(has_sub_field('blockquote')):
+
+      $text   = get_sub_field('blockquote_text');
+      $source = get_sub_field('blockquote_source');
+
+      // Multiple blockquote <li>'s
+      if($quote[1]) {
+        echo '<li>';
+      }
+    ?>
+      <blockquote>
+        <?php
+          // Display blockquote text
+          if($text) { echo $text; }
+          // Display blockquote source
+          if($source) { echo '<footer><cite title="' . $source . '">' . $source . '</cite></footer>'; }
+        ?>
+      </blockquote>
+    <?php
+      // Multiple blockquote </li>'s
+      if($quote[1]) {
+        echo '</li>';
+      }
+
+      // Endwhile blockquote repeater
+      endwhile;
+
+      // Multiple blockquote /.flexslider and </ul>
+      if($quote[1]) {
+        echo '</div></ul>';
+      }
+    ?>
+
+  </div> <!-- /.blockquote-module -->
+
+<?php
+  // End if blockquote module
+  endif;
+
   // Embed content
-  if(get_row_layout() == 'embed'):
+  elseif(get_row_layout() == 'embed'):
 
   $class = strtolower(get_sub_field('embed_class'));
   $embed = get_sub_field('embed');
@@ -165,9 +221,8 @@ while(has_sub_field('content')):
   elseif(get_row_layout() == 'image'):
 
   $class  = get_sub_field('image_class');
-  $layout = get_sub_field('image_layout'); // image, circle, rounded, thumbnail
+  $layout = get_sub_field('image_layout'); // circle, default, lightbox, link, rounded, thumbnail
   $link   = get_sub_field('image_link');
-  $lightbox = get_sub_field('lightbox');
   $image  = get_sub_field('image');
 
   if($image):
@@ -176,9 +231,9 @@ while(has_sub_field('content')):
   <div class="image-module<?php if($class) { echo ' ' . $class; } ?>">
 
     <?php
-      if($link) {
+      if($layout == 'img-link') {
         echo '<a href="' . $link . '">';
-      } elseif($lightbox) {
+      } elseif($layout == 'img-lightbox') {
         echo '<a href="' . $image['url'] . '" class="fluidbox">';
       }
     ?>
@@ -200,7 +255,7 @@ while(has_sub_field('content')):
       */ ?>
 
     <?php
-      if($link || $lightbox) {
+      if($layout == 'img-link' || 'img-lightbox') {
         echo '</a>';
       }
     ?>
@@ -263,62 +318,6 @@ while(has_sub_field('content')):
   </div> <!-- /.list-module -->
 
 <?php
-  // Quote content
-  elseif(get_row_layout() == 'quote'):
-
-  $class = strtolower(get_sub_field('quote_class'));
-  $quote = get_sub_field('quote');
-
-  if($quote):
-?>
-  <div class="quote-module<?php if($class) { echo ' ' . $class; } ?>">
-
-    <?php
-      // Multiple quote flexslider and <ul>
-      if($quote[1]) {
-        echo '<div class="flexslider"><ul class="slides">';
-      }
-
-      // Quote repeater
-      while(has_sub_field('quote')):
-
-      $text   = get_sub_field('quote_text');
-      $source = get_sub_field('quote_source');
-
-      // Multiple quote <li>'s
-      if($quote[1]) {
-        echo '<li>';
-      }
-    ?>
-      <blockquote>
-        <?php
-          // Display quote text
-          if($text) { echo $text; }
-          // Display quote source
-          if($source) { echo '<footer><cite title="' . $source . '">' . $source . '</cite></footer>'; }
-        ?>
-      </blockquote>
-    <?php
-      // Multiple quote </li>'s
-      if($quote[1]) {
-        echo '</li>';
-      }
-
-      // Endwhile quote repeater
-      endwhile;
-
-      // Multiple quote /.flexslider and </ul>
-      if($quote[1]) {
-        echo '</div></ul>';
-      }
-    ?>
-
-  </div> <!-- /.quote-module -->
-
-<?php
-  // End if quote module
-  endif;
-
   // Table content
   elseif(get_row_layout() == 'table'):
 
