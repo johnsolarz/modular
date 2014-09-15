@@ -382,7 +382,8 @@ if(get_field('section')):
               elseif(get_row_layout() == 'jumbotron'):
 
               $class      = strtolower(get_sub_field('jumbotron_class'));
-              $layout     = get_sub_field('jumbotron_layout'); // fixed, scroll, parallax
+              $layout     = get_sub_field('jumbotron_layout'); // fixed, scroll, parallax, link
+              $link       = get_sub_field('jumbotron_link');
               $align      = get_sub_field('jumbotron_text_align');
               $text_color = get_sub_field('jumbotron_text_color');
               $title      = get_sub_field('jumbotron_title');
@@ -392,8 +393,12 @@ if(get_field('section')):
             ?>
 
               <div class="jumbotron-module<?php if($class) { echo ' ' . $class; } ?>">
-                <div class="jumbotron fullscreen background-image<?php if($layout) { echo ' ' . $layout; } ?>" <?php if($text_color || $background || $image) { echo 'style="' . (($text_color)?'color:' . $text_color .';':'') . (($background)?'background-color:' . $background . ';':'') . (($image)?'background-image:url(' . $image['url'] . ');':'') . '"'; } if($image) { echo 'data-img-width="' . $image['width'] . '" data-img-height="' . $image['height'] . '" data-diff="100"'; } ?>>
-
+                <div class="jumbotron fullscreen background-image<?php if($layout != 'link') { echo ' ' . $layout; } ?>" <?php if($text_color || $background || $image) { echo 'style="' . (($text_color)?'color:' . $text_color .';':'') . (($background)?'background-color:' . $background . ';':'') . (($image)?'background-image:url(' . $image['url'] . ');':'') . '"'; } if($image) { echo 'data-img-width="' . $image['width'] . '" data-img-height="' . $image['height'] . '" data-diff="100"'; } ?>>
+                  <?php
+                    if($link) {
+                      echo '<a href="' . $link . '">';
+                    }
+                  ?>
                   <div class="jumbotron__text <?php if($align) { echo $align; } ?>">
                     <div class="inner">
 
@@ -411,6 +416,11 @@ if(get_field('section')):
 
                     </div>
                   </div>
+                  <?php
+                    if($link) {
+                      echo '</a>';
+                    }
+                  ?>
                 </div>
               </div> <!-- /.jumbotron-module -->
 
