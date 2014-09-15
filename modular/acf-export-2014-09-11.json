@@ -181,7 +181,7 @@
     "label_placement":"top",
     "instruction_placement":"label",
     "hide_on_screen":[
-      
+
     ]
   },
   {
@@ -360,7 +360,7 @@
                   "slideshow":"Slideshow"
                 },
                 "default_value":[
-                  
+
                 ],
                 "allow_null":0,
                 "multiple":0,
@@ -1059,7 +1059,7 @@
               "parallax":"Parallax"
             },
             "default_value":[
-              
+
             ],
             "allow_null":0,
             "multiple":0,
@@ -1129,7 +1129,7 @@
               "col-xs-offset-0 col-sm-offset-11":"91.6%"
             },
             "default_value":[
-              
+
             ],
             "allow_null":0,
             "multiple":0,
@@ -1377,7 +1377,7 @@
                   "col-xs-offset-0 col-sm-offset-11":"91.6%"
                 },
                 "default_value":[
-                  
+
                 ],
                 "allow_null":0,
                 "multiple":0,
@@ -1498,13 +1498,6 @@
           "operator":"==",
           "value":"page"
         }
-      ],
-      [
-        {
-          "param":"post_type",
-          "operator":"==",
-          "value":"home"
-        }
       ]
     ],
     "menu_order":0,
@@ -1583,7 +1576,7 @@
     "label_placement":"top",
     "instruction_placement":"label",
     "hide_on_screen":[
-      
+
     ]
   },
   {
@@ -1655,7 +1648,7 @@
               "container fullwidth":"Full Width"
             },
             "default_value":[
-              
+
             ],
             "allow_null":0,
             "multiple":0,
@@ -1680,7 +1673,7 @@
               "row isotope":"Masonry"
             },
             "default_value":[
-              
+
             ],
             "allow_null":0,
             "multiple":0,
@@ -1783,7 +1776,7 @@
                   "col-xs-offset-0 col-sm-offset-11":"91.6%"
                 },
                 "default_value":[
-                  
+
                 ],
                 "allow_null":0,
                 "multiple":0,
@@ -2133,7 +2126,7 @@
                           "slideshow":"Slideshow"
                         },
                         "default_value":[
-                          
+
                         ],
                         "allow_null":0,
                         "multiple":0,
@@ -2237,7 +2230,7 @@
                           "text-right":"Right"
                         },
                         "default_value":[
-                          
+
                         ],
                         "allow_null":0,
                         "multiple":0,
@@ -2527,7 +2520,7 @@
                           "link":"Link"
                         },
                         "default_value":[
-                          
+
                         ],
                         "allow_null":0,
                         "multiple":0,
@@ -2579,7 +2572,7 @@
                           "text-right":"Right"
                         },
                         "default_value":[
-                          
+
                         ],
                         "allow_null":0,
                         "multiple":0,
@@ -2769,7 +2762,7 @@
                           "list-group":"Group"
                         },
                         "default_value":[
-                          
+
                         ],
                         "allow_null":0,
                         "multiple":0,
@@ -2996,7 +2989,7 @@
                           "table table-condensed":"Condensed"
                         },
                         "default_value":[
-                          
+
                         ],
                         "allow_null":0,
                         "multiple":0,
@@ -3286,7 +3279,7 @@
               "container fullwidth":"Full Width"
             },
             "default_value":[
-              
+
             ],
             "allow_null":0,
             "multiple":0,
@@ -3311,7 +3304,7 @@
               "row isotope":"Masonry"
             },
             "default_value":[
-              
+
             ],
             "allow_null":0,
             "multiple":0,
@@ -3414,7 +3407,7 @@
                   "col-xs-offset-0 col-sm-offset-11":"91.6%"
                 },
                 "default_value":[
-                  
+
                 ],
                 "allow_null":0,
                 "multiple":0,
@@ -3764,7 +3757,7 @@
                           "slideshow":"Slideshow"
                         },
                         "default_value":[
-                          
+
                         ],
                         "allow_null":0,
                         "multiple":0,
@@ -4012,7 +4005,7 @@
                           "link":"Link"
                         },
                         "default_value":[
-                          
+
                         ],
                         "allow_null":0,
                         "multiple":0,
@@ -4064,7 +4057,7 @@
                           "text-right":"Right"
                         },
                         "default_value":[
-                          
+
                         ],
                         "allow_null":0,
                         "multiple":0,
@@ -5346,7 +5339,7 @@
     "label_placement":"top",
     "instruction_placement":"label",
     "hide_on_screen":[
-      
+
     ]
   },
   {
@@ -5472,7 +5465,7 @@
               "col-xs-offset-0 col-sm-offset-11":"91.6%"
             },
             "default_value":[
-              
+
             ],
             "allow_null":0,
             "multiple":0,
@@ -5734,7 +5727,7 @@
                   "col-xs-offset-0 col-sm-offset-11":"91.6%"
                 },
                 "default_value":[
-                  
+
                 ],
                 "allow_null":0,
                 "multiple":0,
