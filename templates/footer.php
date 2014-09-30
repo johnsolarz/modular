@@ -4,5 +4,3 @@
     <p>Site by <a href="http://eightsevencentral.com" target="_blank">Eight Seven Central</a></p>
   </div>
 </footer>
-
-<?php wp_footer(); ?>
