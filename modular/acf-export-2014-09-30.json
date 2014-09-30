@@ -1289,6 +1289,7 @@
               "25%":"25%",
               "50%":"50%",
               "75%":"75%",
+              "87.5%":"87.5%",
               "100%":"100%"
             },
             "default_value":{
@@ -1376,9 +1377,9 @@
                   "col-xs-offset-0 col-sm-offset-10":"83.3%",
                   "col-xs-offset-0 col-sm-offset-11":"91.6%"
                 },
-                "default_value":[
+                "default_value":{
 
-                ],
+                },
                 "allow_null":0,
                 "multiple":0,
                 "ui":0,
@@ -2191,152 +2192,6 @@
                     "max":""
                   },
                   {
-                    "key":"5411b38834987",
-                    "name":"hover",
-                    "label":"Hover",
-                    "display":"row",
-                    "sub_fields":[
-                      {
-                        "key":"field_5411b38834988",
-                        "label":"CSS Class",
-                        "name":"hover_class",
-                        "prefix":"",
-                        "type":"text",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "default_value":"",
-                        "placeholder":"",
-                        "prepend":"",
-                        "append":"",
-                        "maxlength":"",
-                        "readonly":0,
-                        "disabled":0
-                      },
-                      {
-                        "key":"field_5411eac34a40d",
-                        "label":"Text Align",
-                        "name":"hover_text_align",
-                        "prefix":"",
-                        "type":"select",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "choices":{
-                          "text-center":"Center",
-                          "text-left":"Left",
-                          "text-right":"Right"
-                        },
-                        "default_value":[
-
-                        ],
-                        "allow_null":0,
-                        "multiple":0,
-                        "ui":0,
-                        "ajax":0,
-                        "placeholder":"",
-                        "disabled":0,
-                        "readonly":0
-                      },
-                      {
-                        "key":"field_5411e6c1d4116",
-                        "label":"Text Color",
-                        "name":"hover_text_color",
-                        "prefix":"",
-                        "type":"color_picker",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "default_value":""
-                      },
-                      {
-                        "key":"field_5411d8b53498d",
-                        "label":"Title",
-                        "name":"hover_title",
-                        "prefix":"",
-                        "type":"text",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "default_value":"",
-                        "placeholder":"",
-                        "prepend":"",
-                        "append":"",
-                        "maxlength":"",
-                        "readonly":0,
-                        "disabled":0
-                      },
-                      {
-                        "key":"field_5411d8ef3498e",
-                        "label":"Text",
-                        "name":"hover_text",
-                        "prefix":"",
-                        "type":"text",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "default_value":"",
-                        "placeholder":"",
-                        "prepend":"",
-                        "append":"",
-                        "maxlength":"",
-                        "readonly":0,
-                        "disabled":0
-                      },
-                      {
-                        "key":"field_5411efa2f5d70",
-                        "label":"Link",
-                        "name":"hover_link",
-                        "prefix":"",
-                        "type":"text",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "default_value":"",
-                        "placeholder":"http:\/\/",
-                        "prepend":"",
-                        "append":"",
-                        "maxlength":"",
-                        "readonly":0,
-                        "disabled":0
-                      },
-                      {
-                        "key":"field_5411e6d8d4117",
-                        "label":"Background Color",
-                        "name":"hover_background",
-                        "prefix":"",
-                        "type":"color_picker",
-                        "instructions":"",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "default_value":""
-                      },
-                      {
-                        "key":"field_5411d5713498c",
-                        "label":"Image",
-                        "name":"hover_image",
-                        "prefix":"",
-                        "type":"image",
-                        "instructions":"Suggested file size +\/- 200kb",
-                        "required":0,
-                        "conditional_logic":0,
-                        "column_width":"",
-                        "return_format":"array",
-                        "preview_size":"thumbnail",
-                        "library":"all"
-                      }
-                    ],
-                    "min":"",
-                    "max":""
-                  },
-                  {
                     "key":"53fd62612fa74",
                     "name":"html",
                     "label":"HTML",
@@ -2756,6 +2611,7 @@
                         "column_width":"",
                         "choices":{
                           "list-unordered":"Unordered",
+                          "list-ordered":"Ordered",
                           "list-unstyled":"Unstyled",
                           "list-inline":"Inline",
                           "list-justified":"Justified",
@@ -4241,14 +4097,15 @@
                         "column_width":"",
                         "choices":{
                           "list-unordered":"Unordered",
+                          "list-ordered":"Ordered",
                           "list-unstyled":"Unstyled",
                           "list-inline":"Inline",
                           "list-justified":"Justified",
                           "list-group":"Group"
                         },
-                        "default_value":{
-                          "list-unordered":"list-unordered"
-                        },
+                        "default_value":[
+
+                        ],
                         "allow_null":0,
                         "multiple":0,
                         "ui":0,

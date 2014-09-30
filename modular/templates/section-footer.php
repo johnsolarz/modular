@@ -383,6 +383,7 @@ if(get_field('section_footer', 'option')):
 
               $class      = strtolower(get_sub_field('jumbotron_class'));
               $layout     = get_sub_field('jumbotron_layout'); // fixed, scroll, parallax, link
+              $link       = get_sub_field('jumbotron_link');
               $align      = get_sub_field('jumbotron_text_align');
               $text_color = get_sub_field('jumbotron_text_color');
               $title      = get_sub_field('jumbotron_title');
@@ -441,7 +442,7 @@ if(get_field('section_footer', 'option')):
               elseif(get_row_layout() == 'list'):
 
               $class  = strtolower(get_sub_field('list_class'));
-              $layout = get_sub_field('list_layout'); // list-unordered, list-unstyled, list-inline, list-justified, list-group
+              $layout = get_sub_field('list_layout'); // list-unordered, list-ordered, list-unstyled, list-inline, list-justified, list-group
             ?>
 
               <div class="list-module<?php if($class) { echo ' ' . $class; } ?>">

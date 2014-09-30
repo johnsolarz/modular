@@ -442,7 +442,7 @@ if(get_field('section')):
               elseif(get_row_layout() == 'list'):
 
               $class  = strtolower(get_sub_field('list_class'));
-              $layout = get_sub_field('list_layout'); // list-unordered, list-unstyled, list-inline, list-justified, list-group
+              $layout = get_sub_field('list_layout'); // list-unordered, list-ordered, list-unstyled, list-inline, list-justified, list-group
             ?>
 
               <div class="list-module<?php if($class) { echo ' ' . $class; } ?>">
