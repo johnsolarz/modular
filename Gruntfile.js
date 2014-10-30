@@ -110,6 +110,9 @@ module.exports = function(grunt) {
             ['assets/css/main.min.css']
           ]
         },
+        extra: {
+          shiv: false
+        },
         uglify: true,
         parseFiles: true
       }
