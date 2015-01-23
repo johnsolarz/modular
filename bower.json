@@ -1,9 +1,9 @@
 {
   "name": "modular",
-  "version": "1.0.2",
-  "homepage": "http://eightsevencentral.com",
+  "version": "1.0.3",
+  "homepage": "http://nownow.io",
   "authors": [
-    "John Solarz <john@eightsevencentral.com>"
+    "John Solarz <hello@nownow.io>"
   ],
   "license": "MIT",
   "private": true,
@@ -15,7 +15,7 @@
   "dependencies": {
     "modernizr": "2.8.2",
     "jquery": "1.11.1",
-    "bootstrap": "3.3.0",
+    "bootstrap": "3.3.1",
     "respond": "1.4.2",
     "imagesloaded": "~3.1.8",
     "isotope": "~2.0.0",
