@@ -2,14 +2,22 @@
 <html class="no-js" <?php language_attributes(); ?>>
 <head>
   <meta charset="utf-8">
-
   <!--
 
-  Built by a couple of folks in Des Moines, Iowa.
-  http://eightsevencentral.com
+  .....................................................................
+
+  Built by:
+
+  .....................................................................
+
+  • Now Now
+  • http://www.nownow.io/
+  • hello@nownow.io
+  • @johnsolarz
+
+  .....................................................................
 
   -->
-
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
